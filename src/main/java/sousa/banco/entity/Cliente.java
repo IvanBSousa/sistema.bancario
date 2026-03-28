@@ -13,11 +13,11 @@ public abstract class Cliente {
     private Long id;
 
     @Column(nullable = false)
-    @OneToMany(mappedBy = "clientes", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "endClienteFK", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Endereco> endereco;
 
     @Column(nullable = false)
-    @OneToMany(mappedBy ="clientes",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy ="contatoClienteFK",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Contato> contato;
 
     public Long getId() {
@@ -54,12 +54,12 @@ public abstract class Cliente {
     }
 
     public void addEndereco(Endereco endereco) {
-        endereco.setCliente(this);
+        endereco.setEndClienteFK(this);
         this.endereco.add(endereco);
     }
 
     public void addContato(Contato contato) {
-        contato.setCliente(this);
+        contato.setContatoClienteFK(this);
         this.contato.add(contato);
     }
 }

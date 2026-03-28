@@ -26,10 +26,10 @@ public class ClientePJ extends Cliente {
     private RegimeTributarioEnum regimeTributario;
 
     @Column(name = "participacao_societaria", nullable = false)
-    @OneToMany(mappedBy = "clientePJ", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
     private List<ParticipacaoSocietaria> socios;
 
-    @OneToMany(mappedBy = "clientePJ", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Faturamento> faturamento;
 
     public String getRazaoSocial() {

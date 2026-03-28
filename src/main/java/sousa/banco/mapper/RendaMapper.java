@@ -17,7 +17,7 @@ public class RendaMapper {
                 renda.getNomeFontePagadora(),
                 renda.getProfissao(),
                 renda.getTipoDocumentoRenda(),
-                renda.getCliente()
+                renda.getRendaClienteFK()
         );
     }
 
@@ -34,7 +34,7 @@ public class RendaMapper {
         renda.setNomeFontePagadora(rendaDTO.nomeFontePagadora());
         renda.setProfissao(rendaDTO.profissao());
         renda.setTipoDocumentoRenda(rendaDTO.tipoDocumentoRenda());
-        renda.setCliente(rendaDTO.cliente());
+        renda.setRendaClienteFK(rendaDTO.cliente());
         return renda;
     }
 }

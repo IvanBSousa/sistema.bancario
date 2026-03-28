@@ -11,7 +11,7 @@ public class ContatoMapper {
             return new ContatoDTO(
                     contato.getTipoContato(),
                     contato.getContato(),
-                    contato.getCliente()
+                    contato.getContatoClienteFK()
             );
         }
 
@@ -22,7 +22,7 @@ public class ContatoMapper {
             Contato contato = new Contato();
             contato.setTipoContato(contatoDTO.tipoContato());
             contato.setContato(contatoDTO.contato());
-            contato.setCliente(contatoDTO.cliente());
+            contato.setContatoClienteFK(contatoDTO.cliente());
             return contato;
         }
 }

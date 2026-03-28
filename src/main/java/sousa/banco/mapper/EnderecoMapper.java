@@ -18,7 +18,7 @@ public class EnderecoMapper {
                 endereco.getEstado(),
                 endereco.getCep(),
                 endereco.getTipoEndereco(),
-                endereco.getCliente()
+                endereco.getEndClienteFK()
         );
     }
 
@@ -35,7 +35,7 @@ public class EnderecoMapper {
         endereco.setEstado(enderecoDTO.estado());
         endereco.setCep(enderecoDTO.cep());
         endereco.setTipoEndereco(enderecoDTO.tipoEndereco());
-        endereco.setCliente(enderecoDTO.cliente());
+        endereco.setEndClienteFK(enderecoDTO.cliente());
         return endereco;
     }
 }

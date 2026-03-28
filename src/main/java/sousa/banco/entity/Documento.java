@@ -34,7 +34,7 @@ public class Documento {
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
-    private ClientePF cliente;
+    private ClientePF docClienteFK;
 
     public Long getId() {
         return id;
@@ -92,16 +92,16 @@ public class Documento {
         this.dataValidade = dataValidade;
     }
 
-    public ClientePF getCliente() {
-        return cliente;
+    public ClientePF getDocClienteFK() {
+        return docClienteFK;
     }
 
-    public void setCliente(ClientePF cliente) {
-        this.cliente = cliente;
+    public void setDocClienteFK(ClientePF docClienteFK) {
+        this.docClienteFK = docClienteFK;
     }
 
     public Documento(Long id, TipoDocumentoEnum tipoDocumento, String numeroDocumento, String orgaoEmissor,
-                     EstadosEnum estadoEmissor, LocalDate dataEmissao, LocalDate dataValidade, ClientePF cliente) {
+                     EstadosEnum estadoEmissor, LocalDate dataEmissao, LocalDate dataValidade, ClientePF docClienteFK) {
         this.id = id;
         this.tipoDocumento = tipoDocumento;
         this.numeroDocumento = numeroDocumento;
@@ -109,7 +109,7 @@ public class Documento {
         this.estadoEmissor = estadoEmissor;
         this.dataEmissao = dataEmissao;
         this.dataValidade = dataValidade;
-        this.cliente = cliente;
+        this.docClienteFK = docClienteFK;
     }
 
     public Documento() {

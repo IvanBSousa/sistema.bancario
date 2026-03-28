@@ -41,7 +41,7 @@ public class Endereco {
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
+    private Cliente endClienteFK;
 
     public Long getId() {
         return id;
@@ -123,12 +123,12 @@ public class Endereco {
         this.tipoEndereco = tipoEndereco;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Cliente getEndClienteFK() {
+        return endClienteFK;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setEndClienteFK(Cliente endClienteFK) {
+        this.endClienteFK = endClienteFK;
     }
 
     public Endereco(Long id, EndercoEnum logradouro, String rua, String numero, String complemento, String bairro,
@@ -143,7 +143,7 @@ public class Endereco {
         this.estado = estado;
         this.cep = cep;
         this.tipoEndereco = tipoEndereco;
-        this.cliente = cliente;
+        this.endClienteFK = cliente;
     }
 
     public Endereco() {

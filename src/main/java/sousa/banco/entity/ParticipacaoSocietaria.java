@@ -1,14 +1,18 @@
 package sousa.banco.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import sousa.banco.enums.TipoParticipacaoSocietariaEnum;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "participacao_societaria")
 public class ParticipacaoSocietaria {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "empresa_id", nullable = false)
@@ -88,5 +92,8 @@ public class ParticipacaoSocietaria {
         this.percentualParticipacao = percentualParticipacao;
         this.dataEntrada = dataEntrada;
         this.tipoParticipacao = tipoParticipacao;
+    }
+
+    public ParticipacaoSocietaria() {
     }
 }

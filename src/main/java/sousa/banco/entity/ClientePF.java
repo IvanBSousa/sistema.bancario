@@ -7,8 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "cliente_pf", uniqueConstraints = {
-        @UniqueConstraint(columnNames = "CPF"),
-        @UniqueConstraint(columnNames = "documentos_numeroDocumento")
+        @UniqueConstraint(columnNames = "CPF")
 })
 public class ClientePF extends Cliente {
 
@@ -19,7 +18,7 @@ public class ClientePF extends Cliente {
     private String cpf;
 
     @Column(nullable = false)
-    @OneToMany(mappedBy = "clientes", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "docClienteFK", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Documento> documentos;
 
     @Column(name = "data_nascimento", nullable = false)
@@ -35,7 +34,7 @@ public class ClientePF extends Cliente {
     @JoinColumn(name = "conjuge_id")
     private ClientePF conjuge;
 
-    @OneToMany(mappedBy = "clientes", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "rendaClienteFK", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Renda> renda;
 
     public String getNomeCompleto() {

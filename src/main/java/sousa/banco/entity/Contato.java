@@ -1,10 +1,7 @@
 package sousa.banco.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import sousa.banco.enums.TipoContatoEnum;
-
-import java.util.List;
 
 @Entity
 @Table(name = "contato")
@@ -21,7 +18,7 @@ public class Contato {
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
+    private Cliente contatoClienteFK;
 
     public Long getId() {
         return id;
@@ -47,19 +44,19 @@ public class Contato {
         this.contato = contato;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Cliente getContatoClienteFK() {
+        return contatoClienteFK;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setContatoClienteFK(Cliente contatoClienteFK) {
+        this.contatoClienteFK = contatoClienteFK;
     }
 
     public Contato(Long id, TipoContatoEnum tipoContato, String contato, Cliente cliente) {
         this.id = id;
         this.tipoContato = tipoContato;
         this.contato = contato;
-        this.cliente = cliente;
+        this.contatoClienteFK = cliente;
     }
 
     public Contato() {
