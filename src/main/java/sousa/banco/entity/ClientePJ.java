@@ -103,4 +103,22 @@ public class ClientePJ extends Cliente {
 
     public ClientePJ() {
     }
+
+    @Override
+    public void addEndereco(Endereco endereco) {
+    }
+
+    @Override
+    public void addContato(Contato contato) {
+    }
+
+    public void addFaturamento(Faturamento faturamento) {
+        faturamento.setEmpresa(this);
+        this.faturamento.add(faturamento);
+    }
+
+    public void addSocio(ParticipacaoSocietaria socio) {
+        socio.setEmpresa(this);
+        this.socios.add(socio);
+    }
 }

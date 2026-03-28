@@ -18,7 +18,7 @@ public class Contato {
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
-    private Cliente contatoClienteFK;
+    private Cliente cliente;
 
     public Long getId() {
         return id;
@@ -44,19 +44,19 @@ public class Contato {
         this.contato = contato;
     }
 
-    public Cliente getContatoClienteFK() {
-        return contatoClienteFK;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setContatoClienteFK(Cliente contatoClienteFK) {
-        this.contatoClienteFK = contatoClienteFK;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public Contato(Long id, TipoContatoEnum tipoContato, String contato, Cliente cliente) {
         this.id = id;
         this.tipoContato = tipoContato;
         this.contato = contato;
-        this.contatoClienteFK = cliente;
+        this.cliente = cliente;
     }
 
     public Contato() {

@@ -1,6 +1,5 @@
 package sousa.banco.dto;
 
-import sousa.banco.entity.Cliente;
 import sousa.banco.enums.EndercoEnum;
 import sousa.banco.enums.EstadosEnum;
 import sousa.banco.enums.TipoEnderecoEnum;
@@ -13,7 +12,6 @@ public record EnderecoDTO(
         String cidade,
         EstadosEnum estado,
         String cep,
-        TipoEnderecoEnum tipoEndereco,
-        Cliente cliente
+        TipoEnderecoEnum tipoEndereco
 ) {
 }

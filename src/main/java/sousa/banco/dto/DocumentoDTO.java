@@ -12,7 +12,6 @@ public record DocumentoDTO(
         String orgaoEmissor,
         EstadosEnum estadoEmissor,
         LocalDate dataEmissao,
-        LocalDate dataValidade,
-        ClientePF cliente
+        LocalDate dataValidade
 ) {
 }

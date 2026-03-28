@@ -15,8 +15,7 @@ public class DocumentoMapper {
                 documento.getOrgaoEmissor(),
                 documento.getEstadoEmissor(),
                 documento.getDataEmissao(),
-                documento.getDataValidade(),
-                documento.getDocClienteFK()
+                documento.getDataValidade()
         );
     }
 
@@ -31,7 +30,6 @@ public class DocumentoMapper {
         documento.setEstadoEmissor(documentoDTO.estadoEmissor());
         documento.setDataEmissao(documentoDTO.dataEmissao());
         documento.setDataValidade(documentoDTO.dataValidade());
-        documento.setDocClienteFK(documentoDTO.cliente());
         return documento;
     }
 }

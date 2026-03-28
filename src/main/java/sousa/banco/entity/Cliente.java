@@ -59,7 +59,7 @@ public abstract class Cliente {
     }
 
     public void addContato(Contato contato) {
-        contato.setContatoClienteFK(this);
+        contato.setContato(this.toString());
         this.contato.add(contato);
     }
 }

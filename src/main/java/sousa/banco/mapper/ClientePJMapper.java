@@ -1,7 +1,7 @@
 package sousa.banco.mapper;
 
 import sousa.banco.dto.ClientePJDTO;
-import sousa.banco.entity.ClientePJ;
+import sousa.banco.entity.*;
 
 public class ClientePJMapper {
 
@@ -44,30 +44,31 @@ public class ClientePJMapper {
         clientePJ.setCnpj(clientePJDTO.cnpj());
         clientePJ.setDataConstituicao(clientePJDTO.dataConstituicao());
         clientePJ.setRegimeTributario(clientePJDTO.regimeTributario());
-        clientePJ.setSocios(
-                clientePJDTO.socios()
-                        .stream()
-                        .map(ParticipacaoSocietariaMapper::toEntity)
-                        .toList()
-        );
-        clientePJ.setFaturamento(
-                clientePJDTO.faturamento()
-                        .stream()
-                        .map(FaturamentoMapper::toEntity)
-                        .toList()
-        );
-        clientePJ.setEndereco(
-                clientePJDTO.endereco()
-                        .stream()
-                        .map(EnderecoMapper::toEntity)
-                        .toList()
-        );
-        clientePJ.setContato(
-                clientePJDTO.contato()
-                        .stream()
-                        .map(ContatoMapper::toEntity)
-                        .toList()
-        );
+        if (clientePJDTO.socios() != null) {
+            clientePJDTO.socios().forEach(sDto -> {
+                ParticipacaoSocietaria socio = ParticipacaoSocietariaMapper.toEntity(sDto);
+                clientePJ.addSocio(socio); // ✅ mantém consistência
+            });
+        }
+
+        if (clientePJDTO.faturamento() != null) {
+            clientePJDTO.faturamento().forEach(fDto -> {
+                Faturamento faturamento = FaturamentoMapper.toEntity(fDto);
+                clientePJ.addFaturamento(faturamento); // ✅ importante
+            });
+        }
+        if (clientePJDTO.endereco() != null) {
+            clientePJDTO.endereco().forEach(eDto -> {
+                Endereco endereco = EnderecoMapper.toEntity(eDto);
+                clientePJ.addEndereco(endereco); // ✅ garante FK
+            });
+        }
+        if (clientePJDTO.contato() != null) {
+            clientePJDTO.contato().forEach(cDto -> {
+                Contato contato = ContatoMapper.toEntity(cDto);
+                clientePJ.addContato(contato); // ✅ mesmo padrão
+            });
+        }
         return clientePJ;
     }
 }

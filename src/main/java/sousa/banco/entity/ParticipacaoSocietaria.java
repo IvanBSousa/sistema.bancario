@@ -12,7 +12,7 @@ public class ParticipacaoSocietaria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private ClientePJ id;
 
     @ManyToOne
     @JoinColumn(name = "empresa_id", nullable = false)

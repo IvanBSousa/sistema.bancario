@@ -12,8 +12,7 @@ public class FaturamentoMapper {
         return new FaturamentoDTO(
                 faturamento.getFaturamentoAnual(),
                 faturamento.getFaturamento12Meses(),
-                faturamento.getAnoBase(),
-                faturamento.getEmpresa()
+                faturamento.getAnoBase()
         );
     }
 
@@ -26,7 +25,6 @@ public class FaturamentoMapper {
         faturamento.setFaturamentoAnual(faturamentoDTO.faturamentoAnual());
         faturamento.setFaturamento12Meses(faturamentoDTO.faturamento12Meses());
         faturamento.setAnoBase(faturamentoDTO.anoBase());
-        faturamento.setEmpresa(faturamentoDTO.empresa());
         return faturamento;
 
     }
