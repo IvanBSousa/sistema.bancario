@@ -34,4 +34,42 @@ public class ClientePFMapper {
                         .toList()
         );
     }
+
+    public static ClientePF toEntity(ClientePFDTO clientePFDTO) {
+        if (clientePFDTO == null) {
+            return null;
+        }
+        ClientePF clientePF = new ClientePF();
+        clientePF.setNomeCompleto(clientePFDTO.nomeCompleto());
+        clientePF.setCpf(clientePFDTO.cpf());
+        clientePF.setDocumentos(
+                clientePFDTO.documentos()
+                        .stream()
+                        .map(DocumentoMapper::toEntity)
+                        .toList()
+        );
+        clientePF.setDataNascimento(clientePFDTO.dataNascimento());
+        clientePF.setNacionalidade(clientePFDTO.nacionalidade());
+        clientePF.setEstadoCivil(clientePFDTO.estadoCivil());
+        clientePF.setConjuge(clientePFDTO.conjuge());
+        clientePF.setRenda(
+                clientePFDTO.renda()
+                        .stream()
+                        .map(RendaMapper::toEntity)
+                        .toList()
+        );
+        clientePF.setEndereco(
+                clientePFDTO.endereco()
+                        .stream()
+                        .map(EnderecoMapper::toEntity)
+                        .toList()
+        );
+        clientePF.setContato(
+                clientePFDTO.contato()
+                        .stream()
+                        .map(ContatoMapper::toEntity)
+                        .toList()
+        );
+        return  clientePF;
+    }
 }
