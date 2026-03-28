@@ -10,23 +10,25 @@ import java.util.List;
         @UniqueConstraint(columnNames = "CPF"),
         @UniqueConstraint(columnNames = "documentos_numeroDocumento")
 })
-public class ClientePF {
+public class ClientePF extends Cliente {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    @Column(name = "nome_completo", nullable = false)
     private String nomeCompleto;
 
-    private String CPF;
+    @Column(nullable = false)
+    private String cpf;
 
+    @Column(nullable = false)
     @OneToMany(mappedBy = "clientes", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Documento> documentos;
 
+    @Column(name = "data_nascimento", nullable = false)
     private LocalDate dataNascimento;
 
+    @Column(nullable = false)
     private String nacionalidade;
 
+    @Column(name = "estado_civil", nullable = false)
     private EstadoCivilEnum estadoCivil;
 
     @ManyToOne
@@ -36,10 +38,84 @@ public class ClientePF {
     @OneToMany(mappedBy = "clientes", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Renda> renda;
 
-    @OneToMany(mappedBy = "clientes", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Endereco> endereco;
+    public String getNomeCompleto() {
+        return nomeCompleto;
+    }
 
-    @OneToMany(mappedBy ="clientes",cascade = CascadeType.ALL, orphanRemoval = true)
-    private Contato contato;
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
+    }
 
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public List<Documento> getDocumentos() {
+        return documentos;
+    }
+
+    public void setDocumentos(List<Documento> documentos) {
+        this.documentos = documentos;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getNacionalidade() {
+        return nacionalidade;
+    }
+
+    public void setNacionalidade(String nacionalidade) {
+        this.nacionalidade = nacionalidade;
+    }
+
+    public EstadoCivilEnum getEstadoCivil() {
+        return estadoCivil;
+    }
+
+    public void setEstadoCivil(EstadoCivilEnum estadoCivil) {
+        this.estadoCivil = estadoCivil;
+    }
+
+    public ClientePF getConjuge() {
+        return conjuge;
+    }
+
+    public void setConjuge(ClientePF conjuge) {
+        this.conjuge = conjuge;
+    }
+
+    public List<Renda> getRenda() {
+        return renda;
+    }
+
+    public void setRenda(List<Renda> renda) {
+        this.renda = renda;
+    }
+
+    public ClientePF(Long id, List<Endereco> endereco, List<Contato> contato, String nomeCompleto, String cpf,
+                     List<Documento> documentos, LocalDate dataNascimento, String nacionalidade,
+                     EstadoCivilEnum estadoCivil, ClientePF conjuge, List<Renda> renda) {
+        super(id, endereco, contato);
+        this.nomeCompleto = nomeCompleto;
+        this.cpf = cpf;
+        this.documentos = documentos;
+        this.dataNascimento = dataNascimento;
+        this.nacionalidade = nacionalidade;
+        this.estadoCivil = estadoCivil;
+        this.conjuge = conjuge;
+        this.renda = renda;
+    }
+
+    public ClientePF() {
+    }
 }

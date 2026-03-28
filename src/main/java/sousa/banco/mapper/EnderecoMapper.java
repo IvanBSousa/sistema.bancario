@@ -1,0 +1,41 @@
+package sousa.banco.mapper;
+
+import sousa.banco.dto.EnderecoDTO;
+import sousa.banco.entity.Endereco;
+
+public class EnderecoMapper {
+
+    public static EnderecoDTO toDTO(Endereco endereco) {
+        if (endereco == null) {
+            return null;
+        }
+        return new EnderecoDTO(
+                endereco.getLogradouro(),
+                endereco.getNumero(),
+                endereco.getComplemento(),
+                endereco.getBairro(),
+                endereco.getCidade(),
+                endereco.getEstado(),
+                endereco.getCep(),
+                endereco.getTipoEndereco(),
+                endereco.getCliente()
+        );
+    }
+
+    public static Endereco toEntity(EnderecoDTO enderecoDTO) {
+        if (enderecoDTO == null) {
+            return null;
+        }
+        Endereco endereco = new Endereco();
+        endereco.setLogradouro(enderecoDTO.logradouro());
+        endereco.setNumero(enderecoDTO.numero());
+        endereco.setComplemento(enderecoDTO.complemento());
+        endereco.setBairro(enderecoDTO.bairro());
+        endereco.setCidade(enderecoDTO.cidade());
+        endereco.setEstado(enderecoDTO.estado());
+        endereco.setCep(enderecoDTO.cep());
+        endereco.setTipoEndereco(enderecoDTO.tipoEndereco());
+        endereco.setCliente(enderecoDTO.cliente());
+        return endereco;
+    }
+}

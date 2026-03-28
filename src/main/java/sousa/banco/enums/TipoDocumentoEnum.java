@@ -4,5 +4,6 @@ public enum TipoDocumentoEnum {
     RG,
     CPF,
     CNH,
-    PASSAPORTE
+    PASSAPORTE,
+    CERTIDAO_NASCIMENTO
 }
