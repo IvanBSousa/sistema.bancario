@@ -1,0 +1,10 @@
+package sousa.banco.enums;
+
+public enum DocumentoRendaEnum {
+
+    EXTRATO_BANCARIO,
+    DECLARACAO_IMPOSTO_RENDA,
+    CONTRACHEQUE,
+    RECIBO_PAGAMENTO_AUTONOMO,
+    DECLARACAO_FONTES_PAGADORAS
+}
