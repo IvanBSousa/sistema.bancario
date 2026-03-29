@@ -11,6 +11,7 @@ public class EnderecoMapper {
         }
         return new EnderecoDTO(
                 endereco.getLogradouro(),
+                endereco.getRua(),
                 endereco.getNumero(),
                 endereco.getComplemento(),
                 endereco.getBairro(),
@@ -27,6 +28,7 @@ public class EnderecoMapper {
         }
         Endereco endereco = new Endereco();
         endereco.setLogradouro(enderecoDTO.logradouro());
+        endereco.setRua(enderecoDTO.rua());
         endereco.setNumero(enderecoDTO.numero());
         endereco.setComplemento(enderecoDTO.complemento());
         endereco.setBairro(enderecoDTO.bairro());

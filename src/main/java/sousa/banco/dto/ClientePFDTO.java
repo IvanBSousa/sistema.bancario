@@ -1,6 +1,5 @@
 package sousa.banco.dto;
 
-import sousa.banco.entity.ClientePF;
 import sousa.banco.enums.EstadoCivilEnum;
 
 import java.time.LocalDate;
@@ -13,7 +12,8 @@ public record ClientePFDTO(
         LocalDate dataNascimento,
         String nacionalidade,
         EstadoCivilEnum estadoCivil,
-        ClientePF conjuge,
+        String cpfConjuge,
+        String nomeConjuge,
         List<RendaDTO> renda,
         List<EnderecoDTO> endereco,
         List<ContatoDTO> contato

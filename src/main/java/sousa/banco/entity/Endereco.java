@@ -40,7 +40,7 @@ public class Endereco {
     private TipoEnderecoEnum tipoEndereco;
 
     @ManyToOne
-    @JoinColumn(name = "cliente_id")
+    @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente endClienteFK;
 
     public Long getId() {

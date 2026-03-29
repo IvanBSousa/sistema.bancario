@@ -19,7 +19,8 @@ public class ClientePFMapper {
                 clientePF.getDataNascimento(),
                 clientePF.getNacionalidade(),
                 clientePF.getEstadoCivil(),
-                clientePF.getConjuge(),
+                clientePF.getCpfConjuge(),
+                clientePF.getNomeConjuge(),
                 clientePF.getRenda()
                         .stream()
                         .map(RendaMapper::toDTO)
@@ -51,25 +52,9 @@ public class ClientePFMapper {
         clientePF.setDataNascimento(clientePFDTO.dataNascimento());
         clientePF.setNacionalidade(clientePFDTO.nacionalidade());
         clientePF.setEstadoCivil(clientePFDTO.estadoCivil());
-        clientePF.setConjuge(clientePFDTO.conjuge());
-        clientePF.setRenda(
-                clientePFDTO.renda()
-                        .stream()
-                        .map(RendaMapper::toEntity)
-                        .toList()
-        );
-        clientePF.setEndereco(
-                clientePFDTO.endereco()
-                        .stream()
-                        .map(EnderecoMapper::toEntity)
-                        .toList()
-        );
-        clientePF.setContato(
-                clientePFDTO.contato()
-                        .stream()
-                        .map(ContatoMapper::toEntity)
-                        .toList()
-        );
+        clientePF.setCpfConjuge(clientePFDTO.cpfConjuge());
+        clientePF.setNomeConjuge(clientePFDTO.nomeConjuge());
+
         return  clientePF;
     }
 }

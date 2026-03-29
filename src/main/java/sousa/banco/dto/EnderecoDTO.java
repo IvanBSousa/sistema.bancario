@@ -6,6 +6,7 @@ import sousa.banco.enums.TipoEnderecoEnum;
 
 public record EnderecoDTO(
         EndercoEnum logradouro,
+        String rua,
         String numero,
         String complemento,
         String bairro,

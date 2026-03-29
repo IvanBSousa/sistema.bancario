@@ -30,9 +30,11 @@ public class ClientePF extends Cliente {
     @Column(name = "estado_civil", nullable = false)
     private EstadoCivilEnum estadoCivil;
 
-    @ManyToOne
-    @JoinColumn(name = "conjuge_id")
-    private ClientePF conjuge;
+    @Column(name = "cpf_conjuge", nullable = true)
+    private String cpfConjuge;
+
+    @Column(name = "nome_conjuge", nullable = true)
+    private String nomeConjuge;
 
     @OneToMany(mappedBy = "rendaClienteFK", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Renda> renda;
@@ -57,9 +59,7 @@ public class ClientePF extends Cliente {
         return documentos;
     }
 
-    public void setDocumentos(List<Documento> documentos) {
-        this.documentos = documentos;
-    }
+    public void setDocumentos(List<Documento> documentos) { this.documentos = documentos; }
 
     public LocalDate getDataNascimento() {
         return dataNascimento;
@@ -85,12 +85,16 @@ public class ClientePF extends Cliente {
         this.estadoCivil = estadoCivil;
     }
 
-    public ClientePF getConjuge() {
-        return conjuge;
+    public String getNomeConjuge() { return nomeConjuge;}
+
+    public void setNomeConjuge(String nomeConjuge) { this.nomeConjuge = nomeConjuge; }
+
+    public String getCpfConjuge() {
+        return cpfConjuge;
     }
 
-    public void setConjuge(ClientePF conjuge) {
-        this.conjuge = conjuge;
+    public void setCpfConjuge(String cpfConjuge) {
+        this.cpfConjuge = cpfConjuge;
     }
 
     public List<Renda> getRenda() {
@@ -103,7 +107,7 @@ public class ClientePF extends Cliente {
 
     public ClientePF(Long id, List<Endereco> endereco, List<Contato> contato, String nomeCompleto, String cpf,
                      List<Documento> documentos, LocalDate dataNascimento, String nacionalidade,
-                     EstadoCivilEnum estadoCivil, ClientePF conjuge, List<Renda> renda) {
+                     EstadoCivilEnum estadoCivil, String nomeConjuge, String cpfConjuge,List<Renda> renda) {
         super(id, endereco, contato);
         this.nomeCompleto = nomeCompleto;
         this.cpf = cpf;
@@ -111,10 +115,25 @@ public class ClientePF extends Cliente {
         this.dataNascimento = dataNascimento;
         this.nacionalidade = nacionalidade;
         this.estadoCivil = estadoCivil;
-        this.conjuge = conjuge;
+        this.nomeConjuge = nomeConjuge;
+        this.cpfConjuge = cpfConjuge;
         this.renda = renda;
     }
 
     public ClientePF() {
     }
+
+    @Override
+    public void addEndereco(Endereco endereco) {
+    }
+
+    @Override
+    public void addContato(Contato contato) {
+    }
+
+    public void addRenda(Renda renda) {
+        renda.setRendaClienteFK(this);
+        this.renda.add(renda);
+    }
+
 }

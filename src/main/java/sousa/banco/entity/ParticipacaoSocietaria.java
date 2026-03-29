@@ -12,7 +12,7 @@ public class ParticipacaoSocietaria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private ClientePJ id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "empresa_id", nullable = false)
@@ -34,6 +34,14 @@ public class ParticipacaoSocietaria {
 
     @Column(name = "tipo_participacao", nullable = false)
     private TipoParticipacaoSocietariaEnum tipoParticipacao;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public ClientePJ getEmpresa() {
         return empresa;
@@ -83,9 +91,10 @@ public class ParticipacaoSocietaria {
         this.tipoParticipacao = tipoParticipacao;
     }
 
-    public ParticipacaoSocietaria(ClientePJ empresa, ClientePF socio, ClientePJ empresaSocia,
+    public ParticipacaoSocietaria(Long id, ClientePJ empresa, ClientePF socio, ClientePJ empresaSocia,
                                   BigDecimal percentualParticipacao, LocalDate dataEntrada,
                                   TipoParticipacaoSocietariaEnum tipoParticipacao) {
+        this.id = id;
         this.empresa = empresa;
         this.socio = socio;
         this.empresaSocia = empresaSocia;

@@ -23,13 +23,13 @@ public class ParticipacaoSocietariaMapper {
         if (participacaoSocietariaDTO == null) {
             return null;
         }
-        return new ParticipacaoSocietaria(
-                participacaoSocietariaDTO.empresa(),
-                participacaoSocietariaDTO.socio(),
-                participacaoSocietariaDTO.empresaSocia(),
-                participacaoSocietariaDTO.percentualParticipacao(),
-                participacaoSocietariaDTO.dataEntrada(),
-                participacaoSocietariaDTO.tipoParticipacao()
-        );
+        ParticipacaoSocietaria participacaoSocietaria = new ParticipacaoSocietaria();
+        participacaoSocietaria.setEmpresa(participacaoSocietariaDTO.empresa());
+        participacaoSocietaria.setSocio(participacaoSocietariaDTO.socio());
+        participacaoSocietaria.setEmpresaSocia(participacaoSocietariaDTO.empresaSocia());
+        participacaoSocietaria.setPercentualParticipacao(participacaoSocietariaDTO.percentualParticipacao());
+        participacaoSocietaria.setDataEntrada(participacaoSocietariaDTO.dataEntrada());
+        participacaoSocietaria.setTipoParticipacao(participacaoSocietariaDTO.tipoParticipacao());
+        return participacaoSocietaria;
     }
 }

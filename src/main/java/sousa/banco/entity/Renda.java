@@ -39,7 +39,7 @@ public class Renda {
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
-    private Long rendaClienteFK;
+    private ClientePF rendaClienteFK;
 
     public Long getId() {
         return id;
@@ -105,17 +105,17 @@ public class Renda {
         this.tipoDocumentoRenda = tipoDocumentoRenda;
     }
 
-    public Long getRendaClienteFK() {
+    public ClientePF getRendaClienteFK() {
         return rendaClienteFK;
     }
 
-    public void setRendaClienteFK(Long rendaClienteFK) {
+    public void setRendaClienteFK(ClientePF rendaClienteFK) {
         this.rendaClienteFK = rendaClienteFK;
     }
 
     public Renda(Long id, BigDecimal rendaMensalBruta, BigDecimal rendaMensalLiquida, BigDecimal descontos,
                  String docFontePagadora, String nomeFontePagadora, String profissao,
-                 DocumentoRendaEnum tipoDocumentoRenda, Long cliente) {
+                 DocumentoRendaEnum tipoDocumentoRenda, ClientePF cliente) {
         this.id = id;
         this.rendaMensalBruta = rendaMensalBruta;
         this.rendaMensalLiquida = rendaMensalLiquida;

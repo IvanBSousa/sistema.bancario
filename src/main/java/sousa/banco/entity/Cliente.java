@@ -2,6 +2,7 @@ package sousa.banco.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,13 +13,11 @@ public abstract class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     @OneToMany(mappedBy = "endClienteFK", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Endereco> endereco;
+    private List<Endereco> endereco = new ArrayList<>();
 
-    @Column(nullable = false)
-    @OneToMany(mappedBy ="contatoClienteFK",cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Contato> contato;
+    @OneToMany(mappedBy ="cliente",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Contato> contato = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -59,7 +58,7 @@ public abstract class Cliente {
     }
 
     public void addContato(Contato contato) {
-        contato.setContato(this.toString());
+        contato.setCliente(this);
         this.contato.add(contato);
     }
 }
