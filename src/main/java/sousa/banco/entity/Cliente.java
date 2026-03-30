@@ -16,7 +16,7 @@ public abstract class Cliente {
     @OneToMany(mappedBy = "endClienteFK", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Endereco> endereco = new ArrayList<>();
 
-    @OneToMany(mappedBy ="cliente",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy ="contatoClienteFK",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Contato> contato = new ArrayList<>();
 
     public Long getId() {
@@ -58,7 +58,9 @@ public abstract class Cliente {
     }
 
     public void addContato(Contato contato) {
-        contato.setCliente(this);
+        contato.setContatoClienteFK(this);
         this.contato.add(contato);
     }
+
+
 }

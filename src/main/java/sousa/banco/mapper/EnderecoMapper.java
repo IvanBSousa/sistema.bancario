@@ -1,6 +1,7 @@
 package sousa.banco.mapper;
 
 import sousa.banco.dto.EnderecoDTO;
+import sousa.banco.entity.ClientePF;
 import sousa.banco.entity.Endereco;
 
 public class EnderecoMapper {

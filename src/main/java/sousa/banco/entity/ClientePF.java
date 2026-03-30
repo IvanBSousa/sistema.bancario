@@ -123,14 +123,6 @@ public class ClientePF extends Cliente {
     public ClientePF() {
     }
 
-    @Override
-    public void addEndereco(Endereco endereco) {
-    }
-
-    @Override
-    public void addContato(Contato contato) {
-    }
-
     public void addRenda(Renda renda) {
         renda.setRendaClienteFK(this);
         this.renda.add(renda);

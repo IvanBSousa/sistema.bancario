@@ -30,30 +30,30 @@ public class ClientePFService {
     @Transactional
     public void criaClientePF(ClientePFDTO clientePFDTO) {
 
-        ClientePF cliente = ClientePFMapper.toEntity(clientePFDTO);
-        cliente.setNomeCompleto(clientePFDTO.nomeCompleto());
-        cliente.setCpf(clientePFDTO.cpf());
-        cliente.setDataNascimento(clientePFDTO.dataNascimento());
-        cliente.setNacionalidade(clientePFDTO.nacionalidade());
-        cliente.setEstadoCivil(clientePFDTO.estadoCivil());
-        cliente.setCpfConjuge(clientePFDTO.cpfConjuge());
-        cliente.setNomeConjuge(clientePFDTO.nomeConjuge());
-        clientePFDTO.endereco().forEach(eDto -> {
-            Endereco e = EnderecoMapper.toEntity(eDto);
-            cliente.addEndereco(e);
-        });
+        ClientePF clientePF = ClientePFMapper.toEntity(clientePFDTO);
 
-        for (ContatoDTO cDto : clientePFDTO.contato()) {
-            Contato contato = ContatoMapper.toEntity(cDto);
-            cliente.addContato(contato); // 👈 AQUI
+        if (clientePFDTO.endereco() != null) {
+            clientePFDTO.endereco().forEach(eDto -> {
+                Endereco endereco = EnderecoMapper.toEntity(eDto);
+                clientePF.addEndereco(endereco);
+            });
         }
 
-//        for (RendaDTO rDto : clientePFDTO.renda()) {
-//            Renda renda = RendaMapper.toEntity(rDto);
-//            cliente.addRenda(renda); // 👈 AQUI
-//        }
+        if (clientePFDTO.contato() != null) {
+            clientePFDTO.contato().forEach(cDto -> {
+                Contato contato = ContatoMapper.toEntity(cDto);
+                clientePF.addContato(contato);
+            });
+        }
 
-        clientePFRepository.persist(cliente);
+        if (clientePFDTO.renda() != null) {
+            clientePFDTO.renda().forEach(rDto -> {
+                Renda renda = RendaMapper.toEntity(rDto);
+                clientePF.addRenda(renda);
+            });
+        }
+
+        clientePFRepository.persist(clientePF);
     }
 
     @Transactional
