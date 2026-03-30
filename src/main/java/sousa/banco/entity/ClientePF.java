@@ -3,6 +3,7 @@ package sousa.banco.entity;
 import jakarta.persistence.*;
 import sousa.banco.enums.EstadoCivilEnum;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,7 +20,7 @@ public class ClientePF extends Cliente {
 
     @Column(nullable = false)
     @OneToMany(mappedBy = "docClienteFK", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Documento> documentos;
+    private List<Documento> documentos = new ArrayList<>();
 
     @Column(name = "data_nascimento", nullable = false)
     private LocalDate dataNascimento;
@@ -37,7 +38,7 @@ public class ClientePF extends Cliente {
     private String nomeConjuge;
 
     @OneToMany(mappedBy = "rendaClienteFK", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Renda> renda;
+    private List<Renda> renda = new ArrayList<>();
 
     public String getNomeCompleto() {
         return nomeCompleto;
@@ -126,6 +127,11 @@ public class ClientePF extends Cliente {
     public void addRenda(Renda renda) {
         renda.setRendaClienteFK(this);
         this.renda.add(renda);
+    }
+
+    public void addDocumento(Documento documento) {
+        documento.setDocClienteFK(this);
+        this.documentos.add(documento);
     }
 
 }

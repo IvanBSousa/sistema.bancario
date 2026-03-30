@@ -1,6 +1,5 @@
 package sousa.banco.dto;
 
-import sousa.banco.entity.ClientePF;
 import sousa.banco.enums.EstadosEnum;
 import sousa.banco.enums.TipoDocumentoEnum;
 

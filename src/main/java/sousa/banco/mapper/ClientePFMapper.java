@@ -43,12 +43,6 @@ public class ClientePFMapper {
         ClientePF clientePF = new ClientePF();
         clientePF.setNomeCompleto(clientePFDTO.nomeCompleto());
         clientePF.setCpf(clientePFDTO.cpf());
-        clientePF.setDocumentos(
-                clientePFDTO.documentos()
-                        .stream()
-                        .map(DocumentoMapper::toEntity)
-                        .toList()
-        );
         clientePF.setDataNascimento(clientePFDTO.dataNascimento());
         clientePF.setNacionalidade(clientePFDTO.nacionalidade());
         clientePF.setEstadoCivil(clientePFDTO.estadoCivil());
