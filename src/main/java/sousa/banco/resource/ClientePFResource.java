@@ -49,7 +49,7 @@ public class ClientePFResource {
     @PUT
     @Path("/{id}")
     public Response atualizaClientePF(@PathParam("id") Long id, @Valid ClientePFDTO clientePFDTO) {
-        ClientePF atualizado = clientePFService.atualizaClientePF(id, clientePFDTO);
+        ClientePFDTO atualizado = clientePFService.atualizaClientePF(id, clientePFDTO);
         if (atualizado != null) {
             return Response.ok(atualizado).build();
         } else {

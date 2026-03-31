@@ -58,8 +58,8 @@ public class ClientePFService {
     }
 
     @Transactional
-    public ClientePF atualizaClientePF(Long id,ClientePFDTO clientePFDTO) {
-        var clientePF = clientePFRepository.findById(id);
+    public ClientePFDTO atualizaClientePF(Long id, ClientePFDTO clientePFDTO) {
+        ClientePF clientePF = clientePFRepository.findById(id);
         if (clientePF != null) {
 
             clientePF.setNomeCompleto(clientePFDTO.nomeCompleto());
@@ -95,8 +95,9 @@ public class ClientePFService {
                     var documento = DocumentoMapper.toEntity(dDto);
                     clientePF.addDocumento(documento);
                 });
-            }        }
-        return clientePF;
+            }
+        }
+        return ClientePFMapper.toDTO(clientePF);
     }
 
     @Transactional
