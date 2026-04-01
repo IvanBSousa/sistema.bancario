@@ -6,4 +6,8 @@ import sousa.banco.entity.ClientePJ;
 
 @ApplicationScoped
 public class ClientePJRepository implements PanacheRepository<ClientePJ> {
+
+    public ClientePJ buscaPorCnpj(String cnpj) {
+        return find("cnpj", cnpj).firstResult();
+    }
 }

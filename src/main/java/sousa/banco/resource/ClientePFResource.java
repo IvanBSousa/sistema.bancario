@@ -5,7 +5,6 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import sousa.banco.dto.ClientePFDTO;
-import sousa.banco.entity.ClientePF;
 import sousa.banco.service.ClientePFService;
 
 import java.util.List;
@@ -60,8 +59,8 @@ public class ClientePFResource {
      @DELETE
      @Path("/{id}")
      public Response deleteClientePF(@PathParam("id") Long id) {
-         boolean deleted = clientePFService.deletaClientePF(id);
-         if (deleted) {
+         boolean deletado = clientePFService.deletaClientePF(id);
+         if (deletado) {
              return Response.noContent().build();
          } else {
              return Response.status(Response.Status.NOT_FOUND).build();
