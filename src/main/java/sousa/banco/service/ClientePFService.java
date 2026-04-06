@@ -120,4 +120,12 @@ public class ClientePFService {
                 .map(ClientePFMapper::toDTO)
                 .toList();
     }
+
+    public ClientePFDTO buscaClientePFPorCPF(String cpf) {
+        var clientePF = clientePFRepository.buscaPorCpf(cpf);
+        if (clientePF != null) {
+            return ClientePFMapper.toDTO(clientePF);
+        }
+        return null;
+    }
 }

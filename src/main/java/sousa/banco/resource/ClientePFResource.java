@@ -45,6 +45,17 @@ public class ClientePFResource {
         }
     }
 
+    @GET
+    @Path("/{cpf}")
+    public Response getClientePFPorCPF(@PathParam("cpf") String cpf) {
+        ClientePFDTO clientePF = clientePFService.buscaClientePFPorCPF(cpf);
+        if (clientePF != null) {
+            return Response.ok(clientePF).build();
+        } else {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+    }
+
     @PUT
     @Path("/{id}")
     public Response atualizaClientePF(@PathParam("id") Long id, @Valid ClientePFDTO clientePFDTO) {
