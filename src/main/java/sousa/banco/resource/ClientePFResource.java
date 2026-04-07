@@ -35,24 +35,24 @@ public class ClientePFResource {
     }
 
     @GET
-    @Path("/{id}")
+    @Path("/id/{id}")
     public Response getClientePFById(@PathParam("id") Long id) {
         ClientePFDTO clientePF = clientePFService.buscaClientePFPorId(id);
         if (clientePF != null) {
             return Response.ok(clientePF).build();
         } else {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.CONFLICT).build();
         }
     }
 
     @GET
-    @Path("/{cpf}")
+    @Path("/cpf/{cpf}")
     public Response getClientePFPorCPF(@PathParam("cpf") String cpf) {
         ClientePFDTO clientePF = clientePFService.buscaClientePFPorCPF(cpf);
         if (clientePF != null) {
             return Response.ok(clientePF).build();
         } else {
-            return Response.status(Response.Status.NOT_FOUND).build();
+            return Response.status(Response.Status.CONFLICT).build();
         }
     }
 
