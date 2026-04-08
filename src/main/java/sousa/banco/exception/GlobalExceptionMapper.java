@@ -17,7 +17,8 @@ public class GlobalExceptionMapper implements ExceptionMapper<Exception> {
     UriInfo uriInfo;
 
     private String getPath() {
-        return (uriInfo != null) ? uriInfo.getPath() : "N/A";
+        //return (uriInfo != null) ? uriInfo.getPath() : "N/A";
+        return uriInfo.getPath();
     }
 
      private Response.Status getCodigo(BusinessException businessException) {

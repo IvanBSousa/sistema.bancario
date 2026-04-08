@@ -7,6 +7,8 @@ import sousa.banco.entity.ClientePF;
 import sousa.banco.entity.Contato;
 import sousa.banco.entity.Endereco;
 import sousa.banco.entity.Renda;
+import sousa.banco.enums.TipoEnderecoEnum;
+import sousa.banco.exception.ConflictException;
 import sousa.banco.exception.NotFoundException;
 import sousa.banco.mapper.*;
 import sousa.banco.repository.ClientePFRepository;
@@ -73,11 +75,24 @@ public class ClientePFService {
         clientePF.setNomeConjuge(clientePFDTO.nomeConjuge());
 
         if (clientePFDTO.endereco() != null) {
+            long countResidencialExistentes = clientePF.getEndereco().stream()
+                    .filter(e -> e.getTipoEndereco() == TipoEnderecoEnum.RESIDENCIAL)
+                    .count();
+
+            long countResidencialNovos = clientePFDTO.endereco().stream()
+                    .filter(e -> e.tipoEndereco() == TipoEnderecoEnum.RESIDENCIAL)
+                    .count();
+
+            if (countResidencialExistentes + countResidencialNovos > 1) {
+                throw new ConflictException("O cliente não pode ter mais de um endereço residencial.");
+            }
+        }
+
             clientePFDTO.endereco().forEach(eDto -> {
                 Endereco endereco = EnderecoMapper.toEntity(eDto);
                 clientePF.addEndereco(endereco);
             });
-        }
+
 
         if (clientePFDTO.contato() != null) {
             clientePFDTO.contato().forEach(cDto -> {

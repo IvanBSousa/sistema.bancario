@@ -17,7 +17,7 @@ public class Documento {
     @Column(name = "tipo_documento", nullable = false)
     private TipoDocumentoEnum tipoDocumento;
 
-    @Column(name = "numero_documento", nullable = false, unique = true)
+    @Column(name = "numero_documento", nullable = false)
     private String numeroDocumento;
 
     @Column(name = "orgao_emissor", nullable = false)
