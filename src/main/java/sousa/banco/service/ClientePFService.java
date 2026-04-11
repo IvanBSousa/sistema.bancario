@@ -3,10 +3,8 @@ package sousa.banco.service;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 import sousa.banco.dto.ClientePFDTO;
-import sousa.banco.entity.ClientePF;
-import sousa.banco.entity.Contato;
-import sousa.banco.entity.Endereco;
-import sousa.banco.entity.Renda;
+import sousa.banco.dto.DocumentoDTO;
+import sousa.banco.entity.*;
 import sousa.banco.enums.TipoEnderecoEnum;
 import sousa.banco.exception.ConflictException;
 import sousa.banco.exception.NotFoundException;
@@ -14,6 +12,7 @@ import sousa.banco.mapper.*;
 import sousa.banco.repository.ClientePFRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @ApplicationScoped
 public class ClientePFService {
@@ -26,6 +25,11 @@ public class ClientePFService {
 
     @Transactional
     public void criaClientePF(ClientePFDTO clientePFDTO) {
+
+        ClientePF clienteExistente = clientePFRepository.buscaPorCpf(clientePFDTO.cpf());
+        if (clienteExistente != null) {
+            throw new ConflictException("ClientePF com CPF " + clientePFDTO.cpf() + " já existe.");
+        }
 
         ClientePF clientePF = ClientePFMapper.toEntity(clientePFDTO);
 
@@ -109,6 +113,20 @@ public class ClientePFService {
         }
 
         if (clientePFDTO.documentos() != null) {
+
+            List<String> docExistente = clientePF.getDocumentos()
+                    .stream()
+                    .map(Documento::getNumeroDocumento)
+                    .toList();
+            String docNovo = clientePFDTO.documentos()
+                    .stream()
+                    .map(DocumentoDTO::numeroDocumento)
+                    .toString();
+
+            if (docExistente.contains(docNovo)) {
+                throw new ConflictException("Este documento já existe!");
+            }
+
             clientePFDTO.documentos().forEach(dDto -> {
                 var documento = DocumentoMapper.toEntity(dDto);
                 clientePF.addDocumento(documento);
