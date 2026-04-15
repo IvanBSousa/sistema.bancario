@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import sousa.banco.clientcpf.ConsultaCPF;
 import sousa.banco.dto.ClientePFDTO;
 import sousa.banco.service.ClientePFService;
 
@@ -15,9 +16,12 @@ import java.util.List;
 public class ClientePFResource {
 
     private final ClientePFService clientePFService;
+    private final ConsultaCPF consultaCPF;
 
-    public ClientePFResource(ClientePFService clientePFService) {
+    public ClientePFResource(ClientePFService clientePFService,
+                             ConsultaCPF consultaCPF) {
         this.clientePFService = clientePFService;
+        this.consultaCPF = consultaCPF;
     }
 
     @POST
@@ -77,4 +81,18 @@ public class ClientePFResource {
              return Response.status(Response.Status.NOT_FOUND).build();
          }
      }
+
+     @GET
+     @Path("consulta-cpf-api/{cpf}")
+
+    public Response infoCPF(@PathParam("cpf") String cpf) {
+        var resposta = consultaCPF.consultaCPF(cpf);
+        if (resposta != null) {
+            return Response.ok(resposta).build();
+        } else {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+     }
+
+
 }

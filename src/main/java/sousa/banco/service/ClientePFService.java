@@ -2,7 +2,10 @@ package sousa.banco.service;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+import sousa.banco.clientcpf.ConsultaCPF;
 import sousa.banco.dto.ClientePFDTO;
+import sousa.banco.dto.ConsultaCPFResonseDTO;
 import sousa.banco.dto.DocumentoDTO;
 import sousa.banco.entity.*;
 import sousa.banco.enums.TipoEnderecoEnum;
@@ -12,15 +15,20 @@ import sousa.banco.mapper.*;
 import sousa.banco.repository.ClientePFRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @ApplicationScoped
 public class ClientePFService {
 
     private final ClientePFRepository clientePFRepository;
+    private final ConsultaCPF consultaCPF;
 
-    public ClientePFService(ClientePFRepository clientePFRepository) {
+    @ConfigProperty(name = "apicpf.api.key")
+    String apiKey;
+
+    public ClientePFService(ClientePFRepository clientePFRepository,
+                            ConsultaCPF consultaCPF) {
         this.clientePFRepository = clientePFRepository;
+        this.consultaCPF = consultaCPF;
     }
 
     @Transactional
@@ -167,5 +175,9 @@ public class ClientePFService {
             throw new NotFoundException("ClientePF com CPF " + cpf + " não encontrado.");
         }
         return ClientePFMapper.toDTO(clientePF);
+    }
+
+    public ConsultaCPFResonseDTO buscaDadosCPF(String cpf) {
+        return consultaCPF.consultaCPF(cpf);
     }
 }
