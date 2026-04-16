@@ -5,7 +5,7 @@ import jakarta.transaction.Transactional;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import sousa.banco.clientcpf.ConsultaCPF;
 import sousa.banco.dto.ClientePFDTO;
-import sousa.banco.dto.ConsultaCPFResonseDTO;
+import sousa.banco.dto.ConsultaCPFResponseDTO;
 import sousa.banco.dto.DocumentoDTO;
 import sousa.banco.entity.*;
 import sousa.banco.enums.TipoEnderecoEnum;
@@ -177,7 +177,7 @@ public class ClientePFService {
         return ClientePFMapper.toDTO(clientePF);
     }
 
-    public ConsultaCPFResonseDTO buscaDadosCPF(String cpf) {
+    public ConsultaCPFResponseDTO buscaDadosCPF(String cpf) {
         return consultaCPF.consultaCPF(cpf);
     }
 }

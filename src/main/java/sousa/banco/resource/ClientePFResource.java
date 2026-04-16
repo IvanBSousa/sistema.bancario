@@ -16,12 +16,9 @@ import java.util.List;
 public class ClientePFResource {
 
     private final ClientePFService clientePFService;
-    private final ConsultaCPF consultaCPF;
 
-    public ClientePFResource(ClientePFService clientePFService,
-                             ConsultaCPF consultaCPF) {
+    public ClientePFResource(ClientePFService clientePFService) {
         this.clientePFService = clientePFService;
-        this.consultaCPF = consultaCPF;
     }
 
     @POST
@@ -84,15 +81,12 @@ public class ClientePFResource {
 
      @GET
      @Path("consulta-cpf-api/{cpf}")
-
-    public Response infoCPF(@PathParam("cpf") String cpf) {
-        var resposta = consultaCPF.consultaCPF(cpf);
+     public Response infoCPF(@PathParam("cpf") String cpf) {
+        var resposta = clientePFService.buscaDadosCPF(cpf);
         if (resposta != null) {
             return Response.ok(resposta).build();
         } else {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
      }
-
-
 }

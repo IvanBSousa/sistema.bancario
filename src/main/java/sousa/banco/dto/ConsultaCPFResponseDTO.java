@@ -3,7 +3,7 @@ package sousa.banco.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public record ConsultaCPFResonseDTO(
+public record ConsultaCPFResponseDTO(
         int code,
         ConsultaCPFDataDTO data
 ) {
