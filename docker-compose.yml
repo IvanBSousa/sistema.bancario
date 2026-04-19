@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
 
   postgres:
@@ -14,6 +12,27 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: keycloak-server
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - "8082:8080"  # Porta externa 8081 para acessar Keycloak (ex.: http://localhost:8081)
+    environment:
+      KEYCLOAK_ADMIN: admin  # Usuário admin do Keycloak
+      KEYCLOAK_ADMIN_PASSWORD: admin  # Senha admin (mude em produção!)
+      KC_DB: postgres  # Usa PostgreSQL como banco
+      KC_DB_URL: jdbc:postgresql://postgres:5432/keycloakdb  # Banco dedicado para Keycloak
+      KC_DB_USERNAME: postgres
+      KC_DB_PASSWORD: postgres
+      KC_HOSTNAME_STRICT: false  # Desabilita verificação de hostname para desenvolvimento
+      KC_HTTP_ENABLED: true  # Habilita HTTP (não use em produção)
+    command: start-dev  # Modo desenvolvimento (rápido, sem otimização)
+
 
   app:
     build:
