@@ -1,9 +1,11 @@
 package sousa.banco.resource;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.microprofile.openapi.annotations.security.SecurityRequirement;
 import sousa.banco.clientcpf.ConsultaCPF;
 import sousa.banco.dto.ClientePFDTO;
 import sousa.banco.service.ClientePFService;
@@ -22,6 +24,8 @@ public class ClientePFResource {
     }
 
     @POST
+    @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
+    @SecurityRequirement(name = "Keycloak")
     @Path("/cria-cliente-pf")
     public Response criaClientePF(@Valid ClientePFDTO clientePFDTO) {
         clientePFService.criaClientePF(clientePFDTO);
@@ -29,6 +33,8 @@ public class ClientePFResource {
     }
 
     @GET
+    @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
+    @SecurityRequirement(name = "Keycloak")
     @Path("/todos-clientes-pf")
     public Response getClientesPF() {
         List<ClientePFDTO> clientesPF = clientePFService.buscaTodosClientesPF();
@@ -36,6 +42,8 @@ public class ClientePFResource {
     }
 
     @GET
+    @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
+    @SecurityRequirement(name = "Keycloak")
     @Path("/id/{id}")
     public Response getClientePFById(@PathParam("id") Long id) {
         ClientePFDTO clientePF = clientePFService.buscaClientePFPorId(id);
@@ -47,6 +55,8 @@ public class ClientePFResource {
     }
 
     @GET
+    @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
+    @SecurityRequirement(name = "Keycloak")
     @Path("/cpf/{cpf}")
     public Response getClientePFPorCPF(@PathParam("cpf") String cpf) {
         ClientePFDTO clientePF = clientePFService.buscaClientePFPorCPF(cpf);
@@ -58,6 +68,8 @@ public class ClientePFResource {
     }
 
     @PUT
+    @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
+    @SecurityRequirement(name = "Keycloak")
     @Path("/{id}")
     public Response atualizaClientePF(@PathParam("id") Long id, @Valid ClientePFDTO clientePFDTO) {
         ClientePFDTO atualizado = clientePFService.atualizaClientePF(id, clientePFDTO);
@@ -69,6 +81,8 @@ public class ClientePFResource {
     }
 
      @DELETE
+     @RolesAllowed({"ROLE_ADMIN"})
+     @SecurityRequirement(name = "Keycloak")
      @Path("/{id}")
      public Response deleteClientePF(@PathParam("id") Long id) {
          boolean deletado = clientePFService.deletaClientePF(id);
@@ -80,6 +94,8 @@ public class ClientePFResource {
      }
 
      @GET
+     @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
+     @SecurityRequirement(name = "Keycloak")
      @Path("consulta-cpf-api/{cpf}")
      public Response infoCPF(@PathParam("cpf") String cpf) {
         var resposta = clientePFService.buscaDadosCPF(cpf);

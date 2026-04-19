@@ -1,8 +1,10 @@
 package sousa.banco.service;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.eclipse.microprofile.openapi.annotations.security.SecurityRequirement;
 import sousa.banco.clientcpf.ConsultaCPF;
 import sousa.banco.dto.ClientePFDTO;
 import sousa.banco.dto.ConsultaCPFResponseDTO;
@@ -32,6 +34,8 @@ public class ClientePFService {
     }
 
     @Transactional
+    @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
+    @SecurityRequirement(name = "Keycloak")
     public void criaClientePF(ClientePFDTO clientePFDTO) {
 
         ClientePF clienteExistente = clientePFRepository.buscaPorCpf(clientePFDTO.cpf());
@@ -73,6 +77,8 @@ public class ClientePFService {
     }
 
     @Transactional
+    @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
+    @SecurityRequirement(name = "Keycloak")
     public ClientePFDTO atualizaClientePF(Long id, ClientePFDTO clientePFDTO) {
         ClientePF clientePF = clientePFRepository.findById(id);
         if (clientePF == null) {
@@ -145,11 +151,15 @@ public class ClientePFService {
     }
 
     @Transactional
+    @RolesAllowed({"ROLE_ADMIN"})
+    @SecurityRequirement(name = "Keycloak")
     public boolean deletaClientePF(Long id) {
         clientePFRepository.deleteById(id);
         return true;
     }
 
+    @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
+    @SecurityRequirement(name = "Keycloak")
     public ClientePFDTO buscaClientePFPorId(Long id) {
         var clientePF = clientePFRepository.findById(id);
         if (clientePF == null) {
@@ -158,6 +168,8 @@ public class ClientePFService {
         return ClientePFMapper.toDTO(clientePF);
     }
 
+    @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
+    @SecurityRequirement(name = "Keycloak")
     public List<ClientePFDTO> buscaTodosClientesPF() {
 
         if (clientePFRepository.listAll().isEmpty()) {
@@ -169,6 +181,8 @@ public class ClientePFService {
                 .toList();
     }
 
+    @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
+    @SecurityRequirement(name = "Keycloak")
     public ClientePFDTO buscaClientePFPorCPF(String cpf) {
         ClientePF clientePF = clientePFRepository.buscaPorCpf(cpf);
         if (clientePF == null) {
