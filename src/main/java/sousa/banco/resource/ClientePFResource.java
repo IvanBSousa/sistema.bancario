@@ -1,5 +1,6 @@
 package sousa.banco.resource;
 
+import io.micrometer.core.annotation.Timed;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
@@ -24,6 +25,7 @@ public class ClientePFResource {
     }
 
     @POST
+    @Timed(value = "criaClientePF", description = "Tempo gasto para criar um cliente PF")
     @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
     @SecurityRequirement(name = "Keycloak")
     @Path("/cria-cliente-pf")
@@ -33,6 +35,7 @@ public class ClientePFResource {
     }
 
     @GET
+    @Timed(value = "buscaTodosClientesPF", description = "Tempo gasto para buscar todos os clientes PF")
     @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
     @SecurityRequirement(name = "Keycloak")
     @Path("/todos-clientes-pf")
