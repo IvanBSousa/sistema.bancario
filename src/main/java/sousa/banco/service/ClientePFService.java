@@ -1,5 +1,7 @@
 package sousa.banco.service;
 
+import io.quarkus.cache.CacheInvalidateAll;
+import io.quarkus.cache.CacheResult;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
@@ -36,6 +38,9 @@ public class ClientePFService {
     @Transactional
     @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
     @SecurityRequirement(name = "Keycloak")
+    @CacheInvalidateAll(cacheName = "clientePFPorId")
+    @CacheInvalidateAll(cacheName = "clientesPFTodos")
+    @CacheInvalidateAll(cacheName = "clientePFPorCpf")
     public void criaClientePF(ClientePFDTO clientePFDTO) {
 
         ClientePF clienteExistente = clientePFRepository.buscaPorCpf(clientePFDTO.cpf());
@@ -79,6 +84,9 @@ public class ClientePFService {
     @Transactional
     @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
     @SecurityRequirement(name = "Keycloak")
+    @CacheInvalidateAll(cacheName = "clientePFPorId")
+    @CacheInvalidateAll(cacheName = "clientesPFTodos")
+    @CacheInvalidateAll(cacheName = "clientePFPorCpf")
     public ClientePFDTO atualizaClientePF(Long id, ClientePFDTO clientePFDTO) {
         ClientePF clientePF = clientePFRepository.findById(id);
         if (clientePF == null) {
@@ -153,6 +161,9 @@ public class ClientePFService {
     @Transactional
     @RolesAllowed({"ROLE_ADMIN"})
     @SecurityRequirement(name = "Keycloak")
+    @CacheInvalidateAll(cacheName = "clientePFPorId")
+    @CacheInvalidateAll(cacheName = "clientesPFTodos")
+    @CacheInvalidateAll(cacheName = "clientePFPorCpf")
     public boolean deletaClientePF(Long id) {
         clientePFRepository.deleteById(id);
         return true;
@@ -160,6 +171,7 @@ public class ClientePFService {
 
     @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
     @SecurityRequirement(name = "Keycloak")
+    @CacheResult(cacheName = "clientePFPorId")
     public ClientePFDTO buscaClientePFPorId(Long id) {
         var clientePF = clientePFRepository.findById(id);
         if (clientePF == null) {
@@ -170,6 +182,7 @@ public class ClientePFService {
 
     @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
     @SecurityRequirement(name = "Keycloak")
+    @CacheResult(cacheName = "clientesPFTodos")
     public List<ClientePFDTO> buscaTodosClientesPF() {
 
         if (clientePFRepository.listAll().isEmpty()) {
@@ -183,6 +196,7 @@ public class ClientePFService {
 
     @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
     @SecurityRequirement(name = "Keycloak")
+    @CacheResult(cacheName = "clientePFPorCpf")
     public ClientePFDTO buscaClientePFPorCPF(String cpf) {
         ClientePF clientePF = clientePFRepository.buscaPorCpf(cpf);
         if (clientePF == null) {

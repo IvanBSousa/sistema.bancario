@@ -14,6 +14,16 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
+  redis:
+    image: redis:7-alpine
+    container_name: redis-cache
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+
   keycloak:
     image: quay.io/keycloak/keycloak:latest
     container_name: keycloak-server
@@ -33,7 +43,6 @@ services:
       KC_HTTP_ENABLED: true  # Habilita HTTP (não use em produção)
     command: start-dev  # Modo desenvolvimento (rápido, sem otimização)
 
-
   app:
     build:
       context: .
@@ -41,6 +50,7 @@ services:
     container_name: quarkus-app
     depends_on:
       - postgres
+      - redis
     ports:
       - "8080:8080"
     environment:
@@ -48,6 +58,8 @@ services:
       QUARKUS_DATASOURCE_USERNAME: postgres
       QUARKUS_DATASOURCE_PASSWORD: postgres
       QUARKUS_HIBERNATE_ORM_DATABASE_GENERATION: update
+      QUARKUS_REDIS_HOSTS: redis:6379
 
 volumes:
   postgres_data:
+  redis_data:

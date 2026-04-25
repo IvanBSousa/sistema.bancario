@@ -28,11 +28,10 @@ public class TelemetriaResource {
     @SecurityRequirement(name = "Keycloak")
     @Path("/telemetria")
     public Response getTimerMetrics() {
-        List<MetricasDTO> metricas = new ArrayList<>();
-
-        telemetriaService.addMetricas(metricas, "criaClientePF");
-        telemetriaService.addMetricas(metricas, "buscaTodosClientesPF");
-
-        return Response.ok(metricas).build();
+        return Response.ok(
+                telemetriaService.buscarMetricas(
+                        "criaClientePF",
+                        "buscaTodosClientesPF"
+                )).build();
     }
 }
