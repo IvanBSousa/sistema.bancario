@@ -1,14 +1,13 @@
 package sousa.banco.resource;
 
-import io.micrometer.core.annotation.Timed;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.eclipse.microprofile.openapi.annotations.security.SecurityRequirement;
-import sousa.banco.clientcpf.ConsultaCPF;
 import sousa.banco.dto.ClientePFDTO;
+import sousa.banco.interceptor.TimeMetrics;
 import sousa.banco.service.ClientePFService;
 
 import java.util.List;
@@ -25,17 +24,17 @@ public class ClientePFResource {
     }
 
     @POST
-    @Timed(value = "criaClientePF", description = "Tempo gasto para criar um cliente PF")
+    @TimeMetrics(value = "criaClientePF", description = "Tempo gasto para criar um cliente PF")
     @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
     @SecurityRequirement(name = "Keycloak")
     @Path("/cria-cliente-pf")
-    public Response criaClientePF(@Valid ClientePFDTO clientePFDTO) {
+    public Response criaClientePFs(@Valid ClientePFDTO clientePFDTO) {
         clientePFService.criaClientePF(clientePFDTO);
         return Response.status(Response.Status.CREATED).build();
     }
 
     @GET
-    @Timed(value = "buscaTodosClientesPF", description = "Tempo gasto para buscar todos os clientes PF")
+    @TimeMetrics(value = "buscaTodosClientesPF", description = "Tempo gasto para buscar todos os clientes PF")
     @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
     @SecurityRequirement(name = "Keycloak")
     @Path("/todos-clientes-pf")

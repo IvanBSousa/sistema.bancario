@@ -1,5 +1,6 @@
 package sousa.banco.interceptor;
 
+import jakarta.enterprise.util.Nonbinding;
 import jakarta.interceptor.InterceptorBinding;
 
 import java.lang.annotation.ElementType;
@@ -11,5 +12,9 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface TimeMetrics {
-    String value();
+    @Nonbinding
+    String value() default "";
+
+    @Nonbinding
+    String description() default "";
 }

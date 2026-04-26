@@ -6,12 +6,11 @@ import jakarta.annotation.Priority;
 import jakarta.interceptor.AroundInvoke;
 import jakarta.interceptor.Interceptor;
 import jakarta.interceptor.InvocationContext;
-import sousa.banco.telemetria.TimeMetricState;
 import sousa.banco.telemetria.TimeMetricsRegistry;
 
 import java.util.concurrent.TimeUnit;
 
-@TimeMetrics("")
+@TimeMetrics()
 @Interceptor
 @Priority(Interceptor.Priority.APPLICATION)
 public class TimeMetricsInterceptor {

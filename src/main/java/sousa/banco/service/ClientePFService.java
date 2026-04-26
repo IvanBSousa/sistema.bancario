@@ -42,7 +42,6 @@ public class ClientePFService {
     @CacheInvalidateAll(cacheName = "clientesPFTodos")
     @CacheInvalidateAll(cacheName = "clientePFPorCpf")
     public void criaClientePF(ClientePFDTO clientePFDTO) {
-
         ClientePF clienteExistente = clientePFRepository.buscaPorCpf(clientePFDTO.cpf());
         if (clienteExistente != null) {
             throw new ConflictException("ClientePF com CPF " + clientePFDTO.cpf() + " já existe.");
