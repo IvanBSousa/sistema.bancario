@@ -16,6 +16,7 @@ import sousa.banco.enums.TipoEnderecoEnum;
 import sousa.banco.exception.ConflictException;
 import sousa.banco.exception.NotFoundException;
 import sousa.banco.mapper.*;
+import sousa.banco.messaging.ClientePFCadastradoPublisher;
 import sousa.banco.repository.ClientePFRepository;
 
 import java.util.List;
@@ -25,14 +26,17 @@ public class ClientePFService {
 
     private final ClientePFRepository clientePFRepository;
     private final ConsultaCPF consultaCPF;
+    private final ClientePFCadastradoPublisher clientePFCadastradoPublisher;
 
     @ConfigProperty(name = "apicpf.api.key")
     String apiKey;
 
     public ClientePFService(ClientePFRepository clientePFRepository,
-                            ConsultaCPF consultaCPF) {
+                            ConsultaCPF consultaCPF,
+                            ClientePFCadastradoPublisher clientePFCadastradoPublisher) {
         this.clientePFRepository = clientePFRepository;
         this.consultaCPF = consultaCPF;
+        this.clientePFCadastradoPublisher = clientePFCadastradoPublisher;
     }
 
     @Transactional
@@ -78,6 +82,10 @@ public class ClientePFService {
         }
 
         clientePFRepository.persist(clientePF);
+
+        System.out.println("Publicando evento de cliente PF cadastrado: " + clientePF.getNomeCompleto() + " - CPF: " + clientePF.getCpf());
+
+        clientePFCadastradoPublisher.publicar(clientePF);
     }
 
     @Transactional

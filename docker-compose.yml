@@ -43,6 +43,16 @@ services:
       KC_HTTP_ENABLED: true  # Habilita HTTP (não use em produção)
     command: start-dev  # Modo desenvolvimento (rápido, sem otimização)
 
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq-broker
+    restart: always
+    ports:
+      - "5672:5672"  # Porta para conexões AMQP
+      - "15672:15672"  # Porta para interface de gerenciamento
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
   app:
     build:
       context: .
@@ -51,6 +61,7 @@ services:
     depends_on:
       - postgres
       - redis
+      - keycloak
     ports:
       - "8080:8080"
     environment:
@@ -63,3 +74,4 @@ services:
 volumes:
   postgres_data:
   redis_data:
+  rabbitmq_data:

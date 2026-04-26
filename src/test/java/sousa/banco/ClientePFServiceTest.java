@@ -1,6 +1,5 @@
 package sousa.banco;
 
-import jakarta.ws.rs.core.Response;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,6 +13,7 @@ import sousa.banco.entity.ClientePF;
 import sousa.banco.enums.*;
 import sousa.banco.exception.ConflictException;
 import sousa.banco.exception.NotFoundException;
+import sousa.banco.messaging.ClientePFCadastradoPublisher;
 import sousa.banco.repository.ClientePFRepository;
 import sousa.banco.service.ClientePFService;
 
@@ -34,6 +34,9 @@ public class ClientePFServiceTest {
 
     @Mock
     private ClientePFRepository clientePFRepository;
+
+    @Mock
+    private ClientePFCadastradoPublisher clientePFCadastradoPublisher;
 
     private ClientePFDTO clientePFDTO;
 
@@ -100,6 +103,7 @@ public class ClientePFServiceTest {
 
         verify(clientePFRepository, times(1)).buscaPorCpf("12345678900");
         verify(clientePFRepository, times(1)).persist(any(ClientePF.class));
+        verify(clientePFCadastradoPublisher, times(1)).publicar(any(ClientePF.class));
     }
 
     @Test
