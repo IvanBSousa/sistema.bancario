@@ -41,7 +41,11 @@ services:
       KC_DB_PASSWORD: postgres
       KC_HOSTNAME_STRICT: false  # Desabilita verificação de hostname para desenvolvimento
       KC_HTTP_ENABLED: true  # Habilita HTTP (não use em produção)
-    command: start-dev  # Modo desenvolvimento (rápido, sem otimização)
+    command:
+      - start-dev  # Modo desenvolvimento (rápido, sem otimização)
+      - --import-realm  # Importa configuração do realm na inicialização
+    volumes:
+      - ./keycloak-export:/opt/keycloak/data/import/  # Importa configuração do realm
 
   rabbitmq:
     image: rabbitmq:3-management
