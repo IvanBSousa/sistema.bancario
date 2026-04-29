@@ -49,11 +49,7 @@ public class ClientePFResource {
     @Path("/id/{id}")
     public Response getClientePFById(@PathParam("id") Long id) {
         ClientePFDTO clientePF = clientePFService.buscaClientePFPorId(id);
-        if (clientePF != null) {
-            return Response.ok(clientePF).build();
-        } else {
-            return Response.status(Response.Status.CONFLICT).build();
-        }
+        return Response.ok(clientePF).build();
     }
 
     @GET
@@ -62,11 +58,7 @@ public class ClientePFResource {
     @Path("/cpf/{cpf}")
     public Response getClientePFPorCPF(@PathParam("cpf") String cpf) {
         ClientePFDTO clientePF = clientePFService.buscaClientePFPorCPF(cpf);
-        if (clientePF != null) {
-            return Response.ok(clientePF).build();
-        } else {
-            return Response.status(Response.Status.CONFLICT).build();
-        }
+        return Response.ok(clientePF).build();
     }
 
     @PUT
@@ -75,11 +67,7 @@ public class ClientePFResource {
     @Path("/{id}")
     public Response atualizaClientePF(@PathParam("id") Long id, @Valid ClientePFDTO clientePFDTO) {
         ClientePFDTO atualizado = clientePFService.atualizaClientePF(id, clientePFDTO);
-        if (atualizado != null) {
-            return Response.ok(atualizado).build();
-        } else {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        }
+        return Response.ok(atualizado).build();
     }
 
      @DELETE
@@ -87,12 +75,7 @@ public class ClientePFResource {
      @SecurityRequirement(name = "Keycloak")
      @Path("/{id}")
      public Response deleteClientePF(@PathParam("id") Long id) {
-         boolean deletado = clientePFService.deletaClientePF(id);
-         if (deletado) {
-             return Response.noContent().build();
-         } else {
-             return Response.status(Response.Status.NOT_FOUND).build();
-         }
+        return Response.noContent().build();
      }
 
      @GET
@@ -101,10 +84,6 @@ public class ClientePFResource {
      @Path("consulta-cpf-api/{cpf}")
      public Response infoCPF(@PathParam("cpf") String cpf) {
         var resposta = clientePFService.buscaDadosCPF(cpf);
-        if (resposta != null) {
-            return Response.ok(resposta).build();
-        } else {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        }
+        return Response.ok(resposta).build();
      }
 }

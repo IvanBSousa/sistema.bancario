@@ -5,7 +5,6 @@ import io.quarkus.cache.CacheResult;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.openapi.annotations.security.SecurityRequirement;
 import sousa.banco.clientcpf.ConsultaCPF;
 import sousa.banco.dto.ClientePFDTO;
@@ -27,9 +26,6 @@ public class ClientePFService {
     private final ClientePFRepository clientePFRepository;
     private final ConsultaCPF consultaCPF;
     private final ClientePFCadastradoPublisher clientePFCadastradoPublisher;
-
-    @ConfigProperty(name = "apicpf.api.key")
-    String apiKey;
 
     public ClientePFService(ClientePFRepository clientePFRepository,
                             ConsultaCPF consultaCPF,
@@ -83,8 +79,6 @@ public class ClientePFService {
 
         clientePFRepository.persist(clientePF);
 
-        System.out.println("Publicando evento de cliente PF cadastrado: " + clientePF.getNomeCompleto() + " - CPF: " + clientePF.getCpf());
-
         clientePFCadastradoPublisher.publicar(clientePF);
     }
 
@@ -119,13 +113,12 @@ public class ClientePFService {
             if (countResidencialExistentes + countResidencialNovos > 1) {
                 throw new ConflictException("O cliente não pode ter mais de um endereço residencial.");
             }
-        }
 
             clientePFDTO.endereco().forEach(eDto -> {
                 Endereco endereco = EnderecoMapper.toEntity(eDto);
                 clientePF.addEndereco(endereco);
             });
-
+        }
 
         if (clientePFDTO.contato() != null) {
             clientePFDTO.contato().forEach(cDto -> {
@@ -142,22 +135,22 @@ public class ClientePFService {
         }
 
         if (clientePFDTO.documentos() != null) {
-
-            List<String> docExistente = clientePF.getDocumentos()
+            List<String> docExistentes = clientePF.getDocumentos()
                     .stream()
                     .map(Documento::getNumeroDocumento)
                     .toList();
-            String docNovo = clientePFDTO.documentos()
+
+            boolean documentoDuplicado = clientePFDTO.documentos()
                     .stream()
                     .map(DocumentoDTO::numeroDocumento)
-                    .toString();
+                    .anyMatch(docExistentes::contains);
 
-            if (docExistente.contains(docNovo)) {
+            if (documentoDuplicado) {
                 throw new ConflictException("Este documento já existe!");
             }
 
             clientePFDTO.documentos().forEach(dDto -> {
-                var documento = DocumentoMapper.toEntity(dDto);
+                Documento documento = DocumentoMapper.toEntity(dDto);
                 clientePF.addDocumento(documento);
             });
         }
@@ -191,12 +184,13 @@ public class ClientePFService {
     @SecurityRequirement(name = "Keycloak")
     @CacheResult(cacheName = "clientesPFTodos")
     public List<ClientePFDTO> buscaTodosClientesPF() {
+        List<ClientePF> clientesPF = clientePFRepository.listAll();
 
-        if (clientePFRepository.listAll().isEmpty()) {
+        if (clientesPF.isEmpty()) {
             throw new NotFoundException("Nenhum ClientePF encontrado.");
         }
-        return clientePFRepository.listAll()
-                .stream()
+
+        return clientesPF.stream()
                 .map(ClientePFMapper::toDTO)
                 .toList();
     }

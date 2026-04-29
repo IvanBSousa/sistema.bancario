@@ -119,7 +119,8 @@ public class ClientePFServiceTest {
             clientePFService.criaClientePF(clientePFDTO);
         });
 
-        assertEquals("CONFLICT", exception.getMessage());
+        assertEquals("ClientePF com CPF 12345678900 já existe.", exception.getMessage());
+        assertEquals("CONFLICT", exception.getCodigo());
         verify(clientePFRepository, times(1)).buscaPorCpf("12345678900");
         verify(clientePFRepository, never()).persist(any(ClientePF.class));
     }
@@ -154,7 +155,8 @@ public class ClientePFServiceTest {
             clientePFService.buscaClientePFPorCPF("99999999999");
         });
 
-        assertEquals("NOT_FOUND", exception.getMessage());
+        assertEquals("ClientePF com CPF 99999999999 não encontrado.", exception.getMessage());
+        assertEquals("NOT_FOUND", exception.getCodigo());
         verify(clientePFRepository, times(1)).buscaPorCpf("99999999999");
     }
 
@@ -188,7 +190,8 @@ public class ClientePFServiceTest {
             clientePFService.buscaClientePFPorId(999L);
         });
 
-        assertEquals("NOT_FOUND", exception.getMessage());
+        assertEquals("ClientePF com ID 999 não encontrado.", exception.getMessage());
+        assertEquals("NOT_FOUND", exception.getCodigo());
         verify(clientePFRepository, times(1)).findById(999L);
     }
 
