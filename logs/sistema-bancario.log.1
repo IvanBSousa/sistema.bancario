@@ -1,0 +1,65 @@
+2026-05-02 09:48:34,772 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[14980] WARN  [io.mic.cor.ins.MeterRegistry] (Quarkus Main Thread) This Gauge has been already registered (MeterId{name='redis.pool.queue.size', tags=[tag(pool.name=<default>),tag(pool.type=redis)]}), the registration will be ignored. Note that subsequent logs will be logged at debug level.
+2026-05-02 09:48:34,810 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[14980] INFO  [io.qua.oid.run.dev.ui.OidcDevUiRecorder] (Quarkus Main Thread) OIDC Dev Console: discovering the provider metadata at http://localhost:8082/realms/banco-realm/.well-known/openid-configuration
+2026-05-02 09:48:36,379 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[14980] INFO  [io.sma.rea.mes.rabbitmq] (Quarkus Main Thread) SRMSG17036: RabbitMQ broker configured to [localhost:5672] for channel clientePF-cadastrado-in
+2026-05-02 09:48:36,407 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[14980] INFO  [io.sma.rea.mes.rabbitmq] (Quarkus Main Thread) SRMSG17036: RabbitMQ broker configured to [localhost:5672] for channel clientePF-cadastrado-out
+2026-05-02 09:48:36,461 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[14980] INFO  [io.sma.rea.mes.rabbitmq] (Quarkus Main Thread) SRMSG17007: Connection with RabbitMQ broker established for channel `clientePF-cadastrado-in`
+2026-05-02 09:48:36,462 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[14980] INFO  [io.ver.rab.imp.RabbitMQClientImpl] (Quarkus Main Thread) Starting rabbitmq client
+2026-05-02 09:48:36,590 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[14980] INFO  [io.sma.rea.mes.rabbitmq] (vert.x-eventloop-thread-0) SRMSG17007: Connection with RabbitMQ broker established for channel `clientePF-cadastrado-in`
+2026-05-02 09:48:36,605 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[14980] INFO  [io.sma.rea.mes.rabbitmq] (vert.x-eventloop-thread-0) SRMSG17000: RabbitMQ Receiver listening address clientePF.cadastrado.email.queue
+2026-05-02 09:48:36,626 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[14980] INFO  [io.quarkus] (Quarkus Main Thread) sistema.bancario 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.34.1) started in 10.833s. Listening on: http://localhost:8080
+2026-05-02 09:48:36,628 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[14980] INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
+2026-05-02 09:48:36,629 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[14980] INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [agroal, cache, cdi, compose, hibernate-orm, hibernate-orm-panache, hibernate-orm-rest-data-panache, hibernate-validator, jdbc-postgresql, keycloak-authorization, messaging, messaging-rabbitmq, micrometer, narayana-jta, oidc, redis-client, rest, rest-client, rest-client-jackson, rest-jackson, rest-links, security, smallrye-context-propagation, smallrye-health, smallrye-openapi, swagger-ui, vertx]
+2026-05-02 09:49:36,397 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[14980] INFO  [sou.ban.log.LogInterceptor] (executor-thread-1) Usuário=admin principal=admin sub=e9d870bd-848b-480c-80ce-bbbf79a08f74 INICIOU acao=criaClientePFs metodo=ClientePFResource.criaClientePFs
+2026-05-02 09:49:37,352 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[14980] INFO  [sou.ban.log.LogInterceptor] (executor-thread-1) Usuário=admin principal=admin sub=e9d870bd-848b-480c-80ce-bbbf79a08f74 CONCLUIU acao=criaClientePFs metodo=ClientePFResource.criaClientePFs
+2026-05-02 09:50:45,258 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[14980] INFO  [sou.ban.log.LogInterceptor] (executor-thread-1) Usuário=admin principal=admin sub=e9d870bd-848b-480c-80ce-bbbf79a08f74 INICIOU acao=getClientesPF metodo=ClientePFResource.getClientesPF
+2026-05-02 09:50:45,384 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[14980] INFO  [sou.ban.log.LogInterceptor] (executor-thread-1) Usuário=admin principal=admin sub=e9d870bd-848b-480c-80ce-bbbf79a08f74 CONCLUIU acao=getClientesPF metodo=ClientePFResource.getClientesPF
+2026-05-02 09:51:36,942 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[14980] INFO  [sou.ban.log.LogInterceptor] (executor-thread-1) Usuário=admin principal=admin sub=e9d870bd-848b-480c-80ce-bbbf79a08f74 INICIOU acao=getClientePFPorCPF metodo=ClientePFResource.getClientePFPorCPF
+2026-05-02 09:51:36,954 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[14980] ERROR [sou.ban.log.LogInterceptor] (executor-thread-1) Usuário=admin principal=admin sub=e9d870bd-848b-480c-80ce-bbbf79a08f74 ERRO acao=getClientePFPorCPF metodo=ClientePFResource.getClientePFPorCPF
+
+Exception in ClientePFService.java:204
+	  202          ClientePF clientePF = clientePFRepository.buscaPorCpf(cpf);
+	  203          if (clientePF == null) {
+	→ 204              throw new NotFoundException("ClientePF com CPF " + cpf + " não encontrado.");
+	  205          }
+	  206          return ClientePFMapper.toDTO(clientePF);: sousa.banco.exception.NotFoundException: ClientePF com CPF asdfaf não encontrado.
+	at sousa.banco.service.ClientePFService.buscaClientePFPorCPF(ClientePFService.java:204)
+	at sousa.banco.service.ClientePFService_Subclass.buscaClientePFPorCPF$$superforward(Unknown Source)
+	at sousa.banco.service.ClientePFService_Subclass$3.apply(Unknown Source)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:73)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext$NextAroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:97)
+	at io.quarkus.security.runtime.interceptor.SecurityHandler.handle(SecurityHandler.java:47)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor.intercept(RolesAllowedInterceptor.java:31)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:70)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext$NextAroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:97)
+	at io.quarkus.resteasy.reactive.server.runtime.StandardSecurityCheckInterceptor.intercept(StandardSecurityCheckInterceptor.java:48)
+	at io.quarkus.resteasy.reactive.server.runtime.StandardSecurityCheckInterceptor$RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:70)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:62)
+	at io.quarkus.cache.runtime.CacheResultInterceptor$3.apply(CacheResultInterceptor.java:95)
+	at io.quarkus.cache.redis.runtime.RedisCacheImpl$1.get(RedisCacheImpl.java:122)
+	at io.smallrye.context.impl.wrappers.SlowContextualSupplier.get(SlowContextualSupplier.java:21)
+	at io.smallrye.mutiny.operators.uni.builders.UniCreateFromItemSupplier.subscribe(UniCreateFromItemSupplier.java:28)
+	at io.smallrye.mutiny.operators.AbstractUni.subscribe(AbstractUni.java:35)
+	at io.smallrye.mutiny.operators.uni.UniRunSubscribeOn.lambda$subscribe$0(UniRunSubscribeOn.java:27)
+	at io.smallrye.mutiny.vertx.MutinyHelper.lambda$blockingExecutor$6(MutinyHelper.java:65)
+	at io.vertx.core.impl.ContextImpl.lambda$executeBlocking$5(ContextImpl.java:205)
+	at io.vertx.core.impl.ContextInternal.dispatch(ContextInternal.java:270)
+	at io.vertx.core.impl.ContextImpl$1.execute(ContextImpl.java:221)
+	at io.vertx.core.impl.WorkerTask.run(WorkerTask.java:56)
+	at org.jboss.threads.ContextHandler$1.runWith(ContextHandler.java:18)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.doRunWith(EnhancedQueueExecutor.java:2651)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2630)
+	at org.jboss.threads.EnhancedQueueExecutor.runThreadBody(EnhancedQueueExecutor.java:1622)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1589)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:11)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:11)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+2026-05-02 09:54:58,061 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[14980] INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (vert.x-worker-thread-2) Restarting quarkus due to changes in LogInterceptor.class.
+2026-05-02 09:54:58,098 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[14980] INFO  [io.ver.rab.imp.RabbitMQClientImpl] (Quarkus Main Thread) Stopping rabbitmq client
+2026-05-02 09:54:58,100 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[14980] INFO  [io.ver.rab.imp.RabbitMQClientImpl] (Quarkus Main Thread) Stopping rabbitmq client
+2026-05-02 09:54:58,117 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[14980] INFO  [io.quarkus] (Quarkus Main Thread) sistema.bancario stopped in 0.053s

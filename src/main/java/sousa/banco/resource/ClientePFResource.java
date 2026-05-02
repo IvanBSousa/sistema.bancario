@@ -8,10 +8,12 @@ import jakarta.ws.rs.core.Response;
 import org.eclipse.microprofile.openapi.annotations.security.SecurityRequirement;
 import sousa.banco.dto.ClientePFDTO;
 import sousa.banco.interceptor.TimeMetrics;
+import sousa.banco.logging.Log;
 import sousa.banco.service.ClientePFService;
 
 import java.util.List;
 
+@Log
 @Path("/clientes-pf")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
