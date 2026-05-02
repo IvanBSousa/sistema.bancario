@@ -37,9 +37,7 @@ public class TimeMetricsInterceptor {
             return context.proceed();
         } finally {
             long duracaoNanos = sample.stop(meterRegistry.timer(metricaNome));
-            long duracao = TimeUnit.NANOSECONDS.toMillis(duracaoNanos);
-
-            timeMetricsRegistry.getOrCreate(metricaNome).atualiza(duracao);
+            timeMetricsRegistry.getOrCreate(metricaNome).atualiza(duracaoNanos);
         }
     }
 }
