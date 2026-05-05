@@ -18,7 +18,6 @@ public class ClientePF extends Cliente {
     @Column(nullable = false)
     private String cpf;
 
-    @Column(nullable = false)
     @OneToMany(mappedBy = "docClienteFK", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Documento> documentos = new ArrayList<>();
 

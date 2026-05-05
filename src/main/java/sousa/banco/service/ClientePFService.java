@@ -165,6 +165,10 @@ public class ClientePFService {
     @CacheInvalidateAll(cacheName = "clientesPFTodos")
     @CacheInvalidateAll(cacheName = "clientePFPorCpf")
     public boolean deletaClientePF(Long id) {
+        var clientePF = clientePFRepository.findById(id);
+        if (clientePF == null) {
+            throw new NotFoundException("ClientePF com ID " + id + " não encontrado.");
+        }
         clientePFRepository.deleteById(id);
         return true;
     }

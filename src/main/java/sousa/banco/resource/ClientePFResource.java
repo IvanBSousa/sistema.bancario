@@ -77,6 +77,7 @@ public class ClientePFResource {
      @SecurityRequirement(name = "Keycloak")
      @Path("/{id}")
      public Response deleteClientePF(@PathParam("id") Long id) {
+        clientePFService.deletaClientePF(id);
         return Response.noContent().build();
      }
 
