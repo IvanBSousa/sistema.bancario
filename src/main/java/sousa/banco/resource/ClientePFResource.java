@@ -1,5 +1,6 @@
 package sousa.banco.resource;
 
+import io.smallrye.faulttolerance.api.RateLimit;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
@@ -11,6 +12,7 @@ import sousa.banco.interceptor.TimeMetrics;
 import sousa.banco.logging.Log;
 import sousa.banco.service.ClientePFService;
 
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Log
@@ -27,6 +29,7 @@ public class ClientePFResource {
 
     @POST
     @TimeMetrics(value = "criaClientePF", description = "Tempo gasto para criar um cliente PF")
+    @RateLimit(value = 2, window = 1, windowUnit = ChronoUnit.MINUTES)
     @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
     @SecurityRequirement(name = "Keycloak")
     @Path("/cria-cliente-pf")
@@ -37,6 +40,7 @@ public class ClientePFResource {
 
     @GET
     @TimeMetrics(value = "buscaTodosClientesPF", description = "Tempo gasto para buscar todos os clientes PF")
+    @RateLimit(value = 2, window = 1, windowUnit = ChronoUnit.MINUTES)
     @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
     @SecurityRequirement(name = "Keycloak")
     @Path("/todos-clientes-pf")
