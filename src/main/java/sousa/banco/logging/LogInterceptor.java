@@ -60,7 +60,7 @@ public class LogInterceptor {
             return resultado;
         } catch (Exception e) {
             LOG.errorf(
-                    "Usuário=%s principal=%s sub=%s ERRO acao=%s metodo=%s.%s",
+                    "Usuário=%s principal=%s sub=%s ERRO acao=%s metodo=%s.%s erro=%s",
                     username, principal, sub,
                     acao,
                     context.getMethod().getDeclaringClass().getSimpleName(),

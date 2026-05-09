@@ -199,7 +199,8 @@ public class ClientePFServiceTest {
     @DisplayName("Deve deletar cliente com sucesso")
     void testDeletaClientePF_Sucesso() {
         // Arrange
-        when(clientePFRepository.deleteById(1L)).thenReturn(true);
+        ClientePF clienteEsperado = new ClientePF();
+        when(clientePFRepository.findById(1L)).thenReturn(clienteEsperado);
 
         // Act
         boolean resultado = clientePFService.deletaClientePF(1L);
