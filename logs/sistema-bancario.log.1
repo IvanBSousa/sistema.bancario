@@ -1,15 +1,190 @@
-2026-05-09 10:13:49,835 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[34040] WARN  [io.qua.config] (Quarkus Main Thread) Unrecognized configuration key "quarkus.fault-tolerance.micrometer.disabled" was provided; it will be ignored; verify that the dependency extension for this configuration is set or that you did not make a typo
-2026-05-09 10:13:49,968 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[34040] WARN  [io.mic.cor.ins.MeterRegistry] (Quarkus Main Thread) This Gauge has been already registered (MeterId{name='redis.pool.queue.size', tags=[tag(pool.name=<default>),tag(pool.type=redis)]}), the registration will be ignored. Note that subsequent logs will be logged at debug level.
-2026-05-09 10:13:50,004 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[34040] INFO  [io.qua.oid.run.dev.ui.OidcDevUiRecorder] (Quarkus Main Thread) OIDC Dev Console: discovering the provider metadata at http://localhost:8082/realms/banco-realm/.well-known/openid-configuration
-2026-05-09 10:13:50,871 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[34040] INFO  [io.sma.rea.mes.rabbitmq] (Quarkus Main Thread) SRMSG17036: RabbitMQ broker configured to [localhost:5672] for channel clientePF-cadastrado-in
-2026-05-09 10:13:50,881 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[34040] INFO  [io.sma.rea.mes.rabbitmq] (Quarkus Main Thread) SRMSG17036: RabbitMQ broker configured to [localhost:5672] for channel clientePF-cadastrado-out
-2026-05-09 10:13:50,899 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[34040] INFO  [io.sma.rea.mes.rabbitmq] (Quarkus Main Thread) SRMSG17007: Connection with RabbitMQ broker established for channel `clientePF-cadastrado-in`
-2026-05-09 10:13:50,900 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[34040] INFO  [io.ver.rab.imp.RabbitMQClientImpl] (Quarkus Main Thread) Starting rabbitmq client
-2026-05-09 10:13:50,941 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[34040] INFO  [io.sma.rea.mes.rabbitmq] (vert.x-eventloop-thread-0) SRMSG17007: Connection with RabbitMQ broker established for channel `clientePF-cadastrado-in`
-2026-05-09 10:13:50,945 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[34040] INFO  [io.sma.rea.mes.rabbitmq] (vert.x-eventloop-thread-0) SRMSG17000: RabbitMQ Receiver listening address clientePF.cadastrado.email.queue
-2026-05-09 10:13:50,951 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[34040] INFO  [io.quarkus] (Quarkus Main Thread) sistema.bancario 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.34.1) started in 6.885s. Listening on: http://localhost:8080
-2026-05-09 10:13:50,951 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[34040] INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
-2026-05-09 10:13:50,951 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[34040] INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [agroal, cache, cdi, compose, hibernate-orm, hibernate-orm-panache, hibernate-orm-rest-data-panache, hibernate-validator, jdbc-postgresql, keycloak-authorization, messaging, messaging-rabbitmq, micrometer, narayana-jta, oidc, redis-client, rest, rest-client, rest-client-jackson, rest-jackson, rest-links, security, smallrye-context-propagation, smallrye-fault-tolerance, smallrye-health, smallrye-openapi, swagger-ui, vertx]
-2026-05-09 10:20:07,200 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[34040] INFO  [io.ver.rab.imp.RabbitMQClientImpl] (Shutdown thread) Stopping rabbitmq client
-2026-05-09 10:20:07,201 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[34040] INFO  [io.ver.rab.imp.RabbitMQClientImpl] (Shutdown thread) Stopping rabbitmq client
-2026-05-09 10:20:07,209 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[34040] INFO  [io.quarkus] (Shutdown thread) sistema.bancario stopped in 0.029s
+2026-05-12 07:54:19,139 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] WARN  [io.qua.config] (Quarkus Main Thread) Unrecognized configuration key "quarkus.fault-tolerance.micrometer.disabled" was provided; it will be ignored; verify that the dependency extension for this configuration is set or that you did not make a typo
+2026-05-12 07:54:19,462 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] WARN  [io.mic.cor.ins.MeterRegistry] (Quarkus Main Thread) This Gauge has been already registered (MeterId{name='redis.pool.queue.size', tags=[tag(pool.name=<default>),tag(pool.type=redis)]}), the registration will be ignored. Note that subsequent logs will be logged at debug level.
+2026-05-12 07:54:19,559 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] INFO  [io.qua.oid.run.dev.ui.OidcDevUiRecorder] (Quarkus Main Thread) OIDC Dev Console: discovering the provider metadata at http://localhost:8082/realms/banco-realm/.well-known/openid-configuration
+2026-05-12 07:54:22,306 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] INFO  [io.sma.rea.mes.rabbitmq] (Quarkus Main Thread) SRMSG17036: RabbitMQ broker configured to [localhost:5672] for channel clientePF-cadastrado-in
+2026-05-12 07:54:22,339 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] INFO  [io.sma.rea.mes.rabbitmq] (Quarkus Main Thread) SRMSG17036: RabbitMQ broker configured to [localhost:5672] for channel clientePF-cadastrado-out
+2026-05-12 07:54:22,393 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] INFO  [io.sma.rea.mes.rabbitmq] (Quarkus Main Thread) SRMSG17007: Connection with RabbitMQ broker established for channel `clientePF-cadastrado-in`
+2026-05-12 07:54:22,394 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] INFO  [io.ver.rab.imp.RabbitMQClientImpl] (Quarkus Main Thread) Starting rabbitmq client
+2026-05-12 07:54:22,525 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] INFO  [io.sma.rea.mes.rabbitmq] (vert.x-eventloop-thread-0) SRMSG17007: Connection with RabbitMQ broker established for channel `clientePF-cadastrado-in`
+2026-05-12 07:54:22,541 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] INFO  [io.sma.rea.mes.rabbitmq] (vert.x-eventloop-thread-0) SRMSG17000: RabbitMQ Receiver listening address clientePF.cadastrado.email.queue
+2026-05-12 07:54:22,562 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] INFO  [io.quarkus] (Quarkus Main Thread) sistema.bancario 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.34.1) started in 12.440s. Listening on: http://localhost:8080
+2026-05-12 07:54:22,563 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
+2026-05-12 07:54:22,564 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [agroal, cache, cdi, compose, hibernate-orm, hibernate-orm-panache, hibernate-orm-rest-data-panache, hibernate-validator, jdbc-postgresql, keycloak-authorization, mailer, messaging, messaging-rabbitmq, micrometer, narayana-jta, oidc, qute, redis-client, rest, rest-client, rest-client-jackson, rest-jackson, rest-links, security, smallrye-context-propagation, smallrye-fault-tolerance, smallrye-health, smallrye-openapi, swagger-ui, vertx]
+2026-05-12 07:55:23,291 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] INFO  [sou.ban.log.LogInterceptor] (executor-thread-3) Usuário=admin principal=admin sub=e9d870bd-848b-480c-80ce-bbbf79a08f74 INICIOU acao=criaClientePFs metodo=ClientePFResource.criaClientePFs
+2026-05-12 07:55:23,336 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] ERROR [sou.ban.log.LogInterceptor] (executor-thread-3) Usuário=admin principal=admin sub=e9d870bd-848b-480c-80ce-bbbf79a08f74 ERRO acao=criaClientePFs metodo=ClientePFResource.criaClientePFs erro=HV000030: No validator could be found for constraint 'sousa.banco.validation.ValidaCPF' validating type 'java.lang.String'. Check configuration for 'criaClientePFs.clientePFDTO.cpf'
+2026-05-12 07:55:23,344 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] ERROR [io.qua.ver.htt.run.QuarkusErrorHandler] (executor-thread-3) HTTP Request to /clientes-pf/cria-cliente-pf failed, error id: efe0daf2-9864-42a9-8f6c-eebc8dca9119-1
+
+Exception in TimeMetricsInterceptor.java:37
+	  35  
+	  36          try {
+	→ 37              return context.proceed();
+	  38          } finally {
+	  39              long duracaoNanos = sample.stop(meterRegistry.timer(metricaNome));
+
+Exception in LogInterceptor.java:50
+	  48  
+	  49          try {
+	→ 50              Object resultado = context.proceed();
+	  51  
+	  52              LOG.infof(: jakarta.validation.UnexpectedTypeException: HV000030: No validator could be found for constraint 'sousa.banco.validation.ValidaCPF' validating type 'java.lang.String'. Check configuration for 'criaClientePFs.clientePFDTO.cpf'
+	at org.hibernate.validator.internal.engine.constraintvalidation.ConstraintTree.getExceptionForNullValidator(ConstraintTree.java:99)
+	at org.hibernate.validator.internal.engine.constraintvalidation.ConstraintTree.getInitializedConstraintValidator(ConstraintTree.java:145)
+	at org.hibernate.validator.internal.engine.constraintvalidation.SimpleConstraintTree.doValidateConstraints(SimpleConstraintTree.java:83)
+	at org.hibernate.validator.internal.engine.constraintvalidation.SimpleConstraintTree.validateConstraints(SimpleConstraintTree.java:40)
+	at org.hibernate.validator.internal.metadata.core.MetaConstraint.doValidateConstraint(MetaConstraint.java:132)
+	at org.hibernate.validator.internal.metadata.core.MetaConstraint.validateConstraint(MetaConstraint.java:124)
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateMetaConstraint(ValidatorImpl.java:602)
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateConstraintsForSingleDefaultGroupElement(ValidatorImpl.java:546)
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateConstraintsForDefaultGroup(ValidatorImpl.java:512)
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateConstraintsForCurrentGroup(ValidatorImpl.java:448)
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateInContext(ValidatorImpl.java:398)
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateCascadedAnnotatedObjectForCurrentGroup(ValidatorImpl.java:673)
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateCascadedConstraints(ValidatorImpl.java:634)
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateParametersInContext(ValidatorImpl.java:942)
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateParameters(ValidatorImpl.java:281)
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateParameters(ValidatorImpl.java:233)
+	at io.quarkus.hibernate.validator.runtime.interceptor.AbstractMethodValidationInterceptor.validateMethodInvocation(AbstractMethodValidationInterceptor.java:65)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.ResteasyReactiveEndPointValidationInterceptor.validateMethodInvocation(ResteasyReactiveEndPointValidationInterceptor.java:21)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.ResteasyReactiveEndPointValidationInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:70)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext$NextAroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:97)
+	at io.smallrye.faulttolerance.FaultToleranceInterceptor.lambda$syncFlow$8(FaultToleranceInterceptor.java:364)
+	at io.smallrye.faulttolerance.core.Future.from(Future.java:85)
+	at io.smallrye.faulttolerance.FaultToleranceInterceptor.lambda$syncFlow$9(FaultToleranceInterceptor.java:364)
+	at io.smallrye.faulttolerance.core.FaultToleranceContext.call(FaultToleranceContext.java:20)
+	at io.smallrye.faulttolerance.core.Invocation.apply(Invocation.java:29)
+	at io.smallrye.faulttolerance.core.rate.limit.RateLimit.apply(RateLimit.java:53)
+	at io.smallrye.faulttolerance.FaultToleranceInterceptor.syncFlow(FaultToleranceInterceptor.java:367)
+	at io.smallrye.faulttolerance.FaultToleranceInterceptor.intercept(FaultToleranceInterceptor.java:205)
+	at io.smallrye.faulttolerance.FaultToleranceInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:70)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext$NextAroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:97)
+	at sousa.banco.interceptor.TimeMetricsInterceptor.medicao(TimeMetricsInterceptor.java:37)
+	at sousa.banco.interceptor.TimeMetricsInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:70)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext$NextAroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:97)
+	at sousa.banco.logging.LogInterceptor.registrar(LogInterceptor.java:50)
+	at sousa.banco.logging.LogInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:70)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext$NextAroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:97)
+	at io.quarkus.security.runtime.interceptor.SecurityHandler.handle(SecurityHandler.java:27)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor.intercept(RolesAllowedInterceptor.java:31)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:70)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:62)
+	at io.quarkus.resteasy.reactive.server.runtime.StandardSecurityCheckInterceptor.intercept(StandardSecurityCheckInterceptor.java:48)
+	at io.quarkus.resteasy.reactive.server.runtime.StandardSecurityCheckInterceptor$RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:30)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:27)
+	at sousa.banco.resource.ClientePFResource_Subclass.criaClientePFs(Unknown Source)
+	at sousa.banco.resource.ClientePFResource$quarkusrestinvoker$criaClientePFs_7d29220ffb78e52692639b2920466530bee4dbf1.invoke(Unknown Source)
+	at org.jboss.resteasy.reactive.server.handlers.InvocationHandler.handle(InvocationHandler.java:29)
+	at io.quarkus.resteasy.reactive.server.runtime.QuarkusResteasyReactiveRequestContext.invokeHandler(QuarkusResteasyReactiveRequestContext.java:190)
+	at org.jboss.resteasy.reactive.common.core.AbstractResteasyReactiveContext.run(AbstractResteasyReactiveContext.java:147)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$15.runWith(VertxCoreRecorder.java:677)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.doRunWith(EnhancedQueueExecutor.java:2651)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2630)
+	at org.jboss.threads.EnhancedQueueExecutor.runThreadBody(EnhancedQueueExecutor.java:1622)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1589)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:11)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:11)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+2026-05-12 07:55:50,532 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] INFO  [sou.ban.log.LogInterceptor] (executor-thread-3) Usuário=admin principal=admin sub=e9d870bd-848b-480c-80ce-bbbf79a08f74 INICIOU acao=criaClientePFs metodo=ClientePFResource.criaClientePFs
+2026-05-12 07:55:50,534 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] ERROR [sou.ban.log.LogInterceptor] (executor-thread-3) Usuário=admin principal=admin sub=e9d870bd-848b-480c-80ce-bbbf79a08f74 ERRO acao=criaClientePFs metodo=ClientePFResource.criaClientePFs erro=HV000030: No validator could be found for constraint 'sousa.banco.validation.ValidaCPF' validating type 'java.lang.String'. Check configuration for 'criaClientePFs.clientePFDTO.cpf'
+2026-05-12 07:55:50,536 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] ERROR [io.qua.ver.htt.run.QuarkusErrorHandler] (executor-thread-3) HTTP Request to /clientes-pf/cria-cliente-pf failed, error id: efe0daf2-9864-42a9-8f6c-eebc8dca9119-2
+
+Exception in TimeMetricsInterceptor.java:37
+	  35  
+	  36          try {
+	→ 37              return context.proceed();
+	  38          } finally {
+	  39              long duracaoNanos = sample.stop(meterRegistry.timer(metricaNome));
+
+Exception in LogInterceptor.java:50
+	  48  
+	  49          try {
+	→ 50              Object resultado = context.proceed();
+	  51  
+	  52              LOG.infof(: jakarta.validation.UnexpectedTypeException: HV000030: No validator could be found for constraint 'sousa.banco.validation.ValidaCPF' validating type 'java.lang.String'. Check configuration for 'criaClientePFs.clientePFDTO.cpf'
+	at org.hibernate.validator.internal.engine.constraintvalidation.ConstraintTree.getExceptionForNullValidator(ConstraintTree.java:99)
+	at org.hibernate.validator.internal.engine.constraintvalidation.ConstraintTree.getInitializedConstraintValidator(ConstraintTree.java:145)
+	at org.hibernate.validator.internal.engine.constraintvalidation.SimpleConstraintTree.doValidateConstraints(SimpleConstraintTree.java:83)
+	at org.hibernate.validator.internal.engine.constraintvalidation.SimpleConstraintTree.validateConstraints(SimpleConstraintTree.java:40)
+	at org.hibernate.validator.internal.metadata.core.MetaConstraint.doValidateConstraint(MetaConstraint.java:132)
+	at org.hibernate.validator.internal.metadata.core.MetaConstraint.validateConstraint(MetaConstraint.java:124)
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateMetaConstraint(ValidatorImpl.java:602)
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateConstraintsForSingleDefaultGroupElement(ValidatorImpl.java:546)
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateConstraintsForDefaultGroup(ValidatorImpl.java:512)
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateConstraintsForCurrentGroup(ValidatorImpl.java:448)
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateInContext(ValidatorImpl.java:398)
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateCascadedAnnotatedObjectForCurrentGroup(ValidatorImpl.java:673)
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateCascadedConstraints(ValidatorImpl.java:634)
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateParametersInContext(ValidatorImpl.java:942)
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateParameters(ValidatorImpl.java:281)
+	at org.hibernate.validator.internal.engine.ValidatorImpl.validateParameters(ValidatorImpl.java:233)
+	at io.quarkus.hibernate.validator.runtime.interceptor.AbstractMethodValidationInterceptor.validateMethodInvocation(AbstractMethodValidationInterceptor.java:65)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.ResteasyReactiveEndPointValidationInterceptor.validateMethodInvocation(ResteasyReactiveEndPointValidationInterceptor.java:21)
+	at io.quarkus.hibernate.validator.runtime.jaxrs.ResteasyReactiveEndPointValidationInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:70)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext$NextAroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:97)
+	at io.smallrye.faulttolerance.FaultToleranceInterceptor.lambda$syncFlow$8(FaultToleranceInterceptor.java:364)
+	at io.smallrye.faulttolerance.core.Future.from(Future.java:85)
+	at io.smallrye.faulttolerance.FaultToleranceInterceptor.lambda$syncFlow$9(FaultToleranceInterceptor.java:364)
+	at io.smallrye.faulttolerance.core.FaultToleranceContext.call(FaultToleranceContext.java:20)
+	at io.smallrye.faulttolerance.core.Invocation.apply(Invocation.java:29)
+	at io.smallrye.faulttolerance.core.rate.limit.RateLimit.apply(RateLimit.java:53)
+	at io.smallrye.faulttolerance.FaultToleranceInterceptor.syncFlow(FaultToleranceInterceptor.java:367)
+	at io.smallrye.faulttolerance.FaultToleranceInterceptor.intercept(FaultToleranceInterceptor.java:205)
+	at io.smallrye.faulttolerance.FaultToleranceInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:70)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext$NextAroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:97)
+	at sousa.banco.interceptor.TimeMetricsInterceptor.medicao(TimeMetricsInterceptor.java:37)
+	at sousa.banco.interceptor.TimeMetricsInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:70)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext$NextAroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:97)
+	at sousa.banco.logging.LogInterceptor.registrar(LogInterceptor.java:50)
+	at sousa.banco.logging.LogInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:70)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext$NextAroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:97)
+	at io.quarkus.security.runtime.interceptor.SecurityHandler.handle(SecurityHandler.java:27)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor.intercept(RolesAllowedInterceptor.java:31)
+	at io.quarkus.security.runtime.interceptor.RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:70)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.proceed(AroundInvokeInvocationContext.java:62)
+	at io.quarkus.resteasy.reactive.server.runtime.StandardSecurityCheckInterceptor.intercept(StandardSecurityCheckInterceptor.java:48)
+	at io.quarkus.resteasy.reactive.server.runtime.StandardSecurityCheckInterceptor$RolesAllowedInterceptor_Bean.intercept(Unknown Source)
+	at io.quarkus.arc.impl.InterceptorInvocation.invoke(InterceptorInvocation.java:42)
+	at io.quarkus.arc.impl.AroundInvokeInvocationContext.perform(AroundInvokeInvocationContext.java:30)
+	at io.quarkus.arc.impl.InvocationContexts.performAroundInvoke(InvocationContexts.java:27)
+	at sousa.banco.resource.ClientePFResource_Subclass.criaClientePFs(Unknown Source)
+	at sousa.banco.resource.ClientePFResource$quarkusrestinvoker$criaClientePFs_7d29220ffb78e52692639b2920466530bee4dbf1.invoke(Unknown Source)
+	at org.jboss.resteasy.reactive.server.handlers.InvocationHandler.handle(InvocationHandler.java:29)
+	at io.quarkus.resteasy.reactive.server.runtime.QuarkusResteasyReactiveRequestContext.invokeHandler(QuarkusResteasyReactiveRequestContext.java:190)
+	at org.jboss.resteasy.reactive.common.core.AbstractResteasyReactiveContext.run(AbstractResteasyReactiveContext.java:147)
+	at io.quarkus.vertx.core.runtime.VertxCoreRecorder$15.runWith(VertxCoreRecorder.java:677)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.doRunWith(EnhancedQueueExecutor.java:2651)
+	at org.jboss.threads.EnhancedQueueExecutor$Task.run(EnhancedQueueExecutor.java:2630)
+	at org.jboss.threads.EnhancedQueueExecutor.runThreadBody(EnhancedQueueExecutor.java:1622)
+	at org.jboss.threads.EnhancedQueueExecutor$ThreadBody.run(EnhancedQueueExecutor.java:1589)
+	at org.jboss.threads.DelegatingRunnable.run(DelegatingRunnable.java:11)
+	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:11)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+2026-05-12 08:06:04,902 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] INFO  [io.qua.dep.dev.RuntimeUpdatesProcessor] (Aesh InputStream Reader) Restarting quarkus due to changes in CNPJValidator.class, CPFValidator.class.
+2026-05-12 08:06:04,940 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] INFO  [io.ver.rab.imp.RabbitMQClientImpl] (Quarkus Main Thread) Stopping rabbitmq client
+2026-05-12 08:06:04,943 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] INFO  [io.ver.rab.imp.RabbitMQClientImpl] (Quarkus Main Thread) Stopping rabbitmq client
+2026-05-12 08:06:04,963 computador /usr/lib/jvm/java-21-openjdk-amd64/bin/java[9423] INFO  [io.quarkus] (Quarkus Main Thread) sistema.bancario stopped in 0.056s
