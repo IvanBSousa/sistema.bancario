@@ -50,6 +50,8 @@ public class ClientePFResource {
     }
 
     @GET
+    @TimeMetrics(value = "buscaClientePFPorId", description = "Tempo gasto para buscar um cliente PF por ID")
+    @RateLimit(value = 2, window = 1, windowUnit = ChronoUnit.MINUTES)
     @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
     @SecurityRequirement(name = "Keycloak")
     @Path("/id/{id}")
@@ -59,6 +61,8 @@ public class ClientePFResource {
     }
 
     @GET
+    @TimeMetrics(value = "buscaClientePFPorCpf", description = "Tempo gasto para buscar um cliente PF por CPF")
+    @RateLimit(value = 2, window = 1, windowUnit = ChronoUnit.MINUTES)
     @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
     @SecurityRequirement(name = "Keycloak")
     @Path("/cpf/{cpf}")
@@ -68,6 +72,8 @@ public class ClientePFResource {
     }
 
     @PUT
+    @TimeMetrics(value = "atualizaClientePF", description = "Tempo gasto para atualizar um cliente PF")
+    @RateLimit(value = 2, window = 1, windowUnit = ChronoUnit.MINUTES)
     @RolesAllowed({"ROLE_ADMIN", "ROLE_USER"})
     @SecurityRequirement(name = "Keycloak")
     @Path("/{id}")
@@ -77,6 +83,8 @@ public class ClientePFResource {
     }
 
      @DELETE
+     @TimeMetrics(value = "deletaClientePF", description = "Tempo gasto para deletar um cliente PF")
+     @RateLimit(value = 2, window = 1, windowUnit = ChronoUnit.MINUTES)
      @RolesAllowed({"ROLE_ADMIN"})
      @SecurityRequirement(name = "Keycloak")
      @Path("/{id}")

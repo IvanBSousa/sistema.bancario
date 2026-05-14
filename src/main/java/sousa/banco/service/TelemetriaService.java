@@ -10,7 +10,6 @@ import sousa.banco.telemetria.TimeMetricsRegistry;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
 
 @ApplicationScoped
 public class TelemetriaService {
