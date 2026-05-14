@@ -25,8 +25,8 @@ public class ClientePJ extends Cliente {
     @Column(name = "regime_tributario", nullable = false)
     private RegimeTributarioEnum regimeTributario;
 
+    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, orphanRemoval = true)
     @Column(name = "participacao_societaria", nullable = false)
-    @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
     private List<ParticipacaoSocietaria> socios;
 
     @OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL, orphanRemoval = true)

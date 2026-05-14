@@ -10,9 +10,8 @@ public class ParticipacaoSocietariaMapper {
             return null;
         }
         return new ParticipacaoSocietariaDTO(
-                participacaoSocietaria.getEmpresa(),
-                participacaoSocietaria.getSocio(),
-                participacaoSocietaria.getEmpresaSocia(),
+                participacaoSocietaria.getCpfCnpj(),
+                participacaoSocietaria.getNomeRazaoSocial(),
                 participacaoSocietaria.getPercentualParticipacao(),
                 participacaoSocietaria.getDataEntrada(),
                 participacaoSocietaria.getTipoParticipacao()
@@ -24,9 +23,8 @@ public class ParticipacaoSocietariaMapper {
             return null;
         }
         ParticipacaoSocietaria participacaoSocietaria = new ParticipacaoSocietaria();
-        participacaoSocietaria.setEmpresa(participacaoSocietariaDTO.empresa());
-        participacaoSocietaria.setSocio(participacaoSocietariaDTO.socio());
-        participacaoSocietaria.setEmpresaSocia(participacaoSocietariaDTO.empresaSocia());
+        participacaoSocietaria.setCpfCnpj(participacaoSocietariaDTO.cpfCnpj());
+        participacaoSocietaria.setNomeRazaoSocial(participacaoSocietariaDTO.nomeRazaoSocial());
         participacaoSocietaria.setPercentualParticipacao(participacaoSocietariaDTO.percentualParticipacao());
         participacaoSocietaria.setDataEntrada(participacaoSocietariaDTO.dataEntrada());
         participacaoSocietaria.setTipoParticipacao(participacaoSocietariaDTO.tipoParticipacao());

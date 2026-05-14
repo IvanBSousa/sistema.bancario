@@ -8,9 +8,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public record ParticipacaoSocietariaDTO(
-        ClientePJ empresa,
-        ClientePF socio,
-        ClientePJ empresaSocia,
+        String cpfCnpj,
+        String nomeRazaoSocial,
         BigDecimal percentualParticipacao,
         LocalDate dataEntrada,
         TipoParticipacaoSocietariaEnum tipoParticipacao

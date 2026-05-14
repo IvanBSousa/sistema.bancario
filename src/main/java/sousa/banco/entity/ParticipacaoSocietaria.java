@@ -14,17 +14,9 @@ public class ParticipacaoSocietaria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "empresa_id", nullable = false)
-    private ClientePJ empresa;
+    private String cpfCnpj;
 
-    @ManyToOne
-    @JoinColumn(name = "socio_id", nullable = false)
-    private ClientePF socio;
-
-    @ManyToOne
-    @JoinColumn(name = "empresa_socia_id")
-    private ClientePJ empresaSocia;
+    private String nomeRazaoSocial;
 
     @Column(name = "percentual_participacao", nullable = false)
     private BigDecimal percentualParticipacao;
@@ -35,6 +27,10 @@ public class ParticipacaoSocietaria {
     @Column(name = "tipo_participacao", nullable = false)
     private TipoParticipacaoSocietariaEnum tipoParticipacao;
 
+    @ManyToOne
+    @JoinColumn(name = "empresa_id")
+    private ClientePJ empresa;
+
     public Long getId() {
         return id;
     }
@@ -43,28 +39,20 @@ public class ParticipacaoSocietaria {
         this.id = id;
     }
 
-    public ClientePJ getEmpresa() {
-        return empresa;
+    public String getCpfCnpj() {
+        return cpfCnpj;
     }
 
-    public void setEmpresa(ClientePJ empresa) {
-        this.empresa = empresa;
+    public void setCpfCnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
     }
 
-    public ClientePF getSocio() {
-        return socio;
+    public String getNomeRazaoSocial() {
+        return nomeRazaoSocial;
     }
 
-    public void setSocio(ClientePF socio) {
-        this.socio = socio;
-    }
-
-    public ClientePJ getEmpresaSocia() {
-        return empresaSocia;
-    }
-
-    public void setEmpresaSocia(ClientePJ empresaSocia) {
-        this.empresaSocia = empresaSocia;
+    public void setNomeRazaoSocial(String nomeRazaoSocial) {
+        this.nomeRazaoSocial = nomeRazaoSocial;
     }
 
     public BigDecimal getPercentualParticipacao() {
@@ -91,16 +79,24 @@ public class ParticipacaoSocietaria {
         this.tipoParticipacao = tipoParticipacao;
     }
 
-    public ParticipacaoSocietaria(Long id, ClientePJ empresa, ClientePF socio, ClientePJ empresaSocia,
-                                  BigDecimal percentualParticipacao, LocalDate dataEntrada,
-                                  TipoParticipacaoSocietariaEnum tipoParticipacao) {
-        this.id = id;
+    public ClientePJ getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(ClientePJ empresa) {
         this.empresa = empresa;
-        this.socio = socio;
-        this.empresaSocia = empresaSocia;
+    }
+
+    public ParticipacaoSocietaria(Long id, String cpfCnpj, String nomeRazaoSocial, BigDecimal percentualParticipacao,
+                                  LocalDate dataEntrada, TipoParticipacaoSocietariaEnum tipoParticipacao,
+                                  ClientePJ empresa) {
+        this.id = id;
+        this.cpfCnpj = cpfCnpj;
+        this.nomeRazaoSocial = nomeRazaoSocial;
         this.percentualParticipacao = percentualParticipacao;
         this.dataEntrada = dataEntrada;
         this.tipoParticipacao = tipoParticipacao;
+        this.empresa = empresa;
     }
 
     public ParticipacaoSocietaria() {
